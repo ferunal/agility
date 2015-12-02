@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpConsolcompraEditDlg" widgetVar="CmpConsolcompraEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCmpConsolcompraTitle}">
+            <h:form id="CmpConsolcompraEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpConsolcompraController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmId}" for="ccmId" />
+                        <p:inputText id="ccmId" value="#{cmpConsolcompraController.selected.ccmId}" title="#{bundle.EditCmpConsolcompraTitle_ccmId}" required="true" requiredMessage="#{bundle.EditCmpConsolcompraRequiredMessage_ccmId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmFecproc}" for="ccmFecproc" />
+                        <p:calendar id="ccmFecproc" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpConsolcompraController.selected.ccmFecproc}" title="#{bundle.EditCmpConsolcompraTitle_ccmFecproc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmCant}" for="ccmCant" />
+                        <p:inputText id="ccmCant" value="#{cmpConsolcompraController.selected.ccmCant}" title="#{bundle.EditCmpConsolcompraTitle_ccmCant}" />
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmPrecio}" for="ccmPrecio" />
+                        <p:inputText id="ccmPrecio" value="#{cmpConsolcompraController.selected.ccmPrecio}" title="#{bundle.EditCmpConsolcompraTitle_ccmPrecio}" />
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_fpgId}" for="fpgId" />
+                        <p:inputText id="fpgId" value="#{cmpConsolcompraController.selected.fpgId}" title="#{bundle.EditCmpConsolcompraTitle_fpgId}" />
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpConsolcompraController.selected.strId}" title="#{bundle.EditCmpConsolcompraTitle_strId}" required="true" requiredMessage="#{bundle.EditCmpConsolcompraRequiredMessage_strId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_cpeId}" for="cpeId" />
+                        <p:inputText id="cpeId" value="#{cmpConsolcompraController.selected.cpeId}" title="#{bundle.EditCmpConsolcompraTitle_cpeId}" required="true" requiredMessage="#{bundle.EditCmpConsolcompraRequiredMessage_cpeId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmFechavenfactura}" for="ccmFechavenfactura" />
+                        <p:calendar id="ccmFechavenfactura" pattern="MM/dd/yyyy" value="#{cmpConsolcompraController.selected.ccmFechavenfactura}" title="#{bundle.EditCmpConsolcompraTitle_ccmFechavenfactura}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccmPreciototal}" for="ccmPreciototal" />
+                        <p:inputText id="ccmPreciototal" value="#{cmpConsolcompraController.selected.ccmPreciototal}" title="#{bundle.EditCmpConsolcompraTitle_ccmPreciototal}" />
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_ccpId}" for="ccpId" />
+                        <p:selectOneMenu id="ccpId" value="#{cmpConsolcompraController.selected.ccpId}" required="true" requiredMessage="#{bundle.EditCmpConsolcompraRequiredMessage_ccpId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cmpConspedidoController.itemsAvailableSelectOne}"
+                                           var="ccpIdItem"
+                                           itemValue="#{ccpIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{cmpConsolcompraController.selected.marId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invMarcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_pspId}" for="pspId" />
+                        <p:selectOneMenu id="pspId" value="#{cmpConsolcompraController.selected.pspId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invPresentprodController.itemsAvailableSelectOne}"
+                                           var="pspIdItem"
+                                           itemValue="#{pspIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_prdId}" for="prdId" />
+                        <p:selectOneMenu id="prdId" value="#{cmpConsolcompraController.selected.prdId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invProductoController.itemsAvailableSelectOne}"
+                                           var="prdIdItem"
+                                           itemValue="#{prdIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCmpConsolcompraLabel_prvId}" for="prvId" />
+                        <p:selectOneMenu id="prvId" value="#{cmpConsolcompraController.selected.prvId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invProovedorController.itemsAvailableSelectOne}"
+                                           var="prvIdItem"
+                                           itemValue="#{prvIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpConsolcompraController.update}" value="#{bundle.Save}" update="display,:CmpConsolcompraListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CmpConsolcompraEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpConsolcompraEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvCatprodViewDlg" widgetVar="InvCatprodViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvCatprodTitle}">
+            <h:form id="InvCatprodViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invCatprodController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvCatprodLabel_cpdId}"/>
+                        <h:outputText value="#{invCatprodController.selected.cpdId}" title="#{bundle.ViewInvCatprodTitle_cpdId}"/>
+                        <h:outputText value="#{bundle.ViewInvCatprodLabel_cpdNombre}"/>
+                        <h:outputText value="#{invCatprodController.selected.cpdNombre}" title="#{bundle.ViewInvCatprodTitle_cpdNombre}"/>
+                        <h:outputText value="#{bundle.ViewInvCatprodLabel_cpdDesc}"/>
+                        <h:outputText value="#{invCatprodController.selected.cpdDesc}" title="#{bundle.ViewInvCatprodTitle_cpdDesc}"/>
+                        <h:outputText value="#{bundle.ViewInvCatprodLabel_cpdEst}"/>
+                        <p:selectBooleanCheckbox value="#{invCatprodController.selected.cpdEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvCatprodLabel_cpdAplica}"/>
+                        <p:selectBooleanCheckbox value="#{invCatprodController.selected.cpdAplica}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvCatprodViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

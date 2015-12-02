@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfBancoEditDlg" widgetVar="RfBancoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRfBancoTitle}">
+            <h:form id="RfBancoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfBancoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRfBancoLabel_bncId}" for="bncId" />
+                        <p:inputText id="bncId" value="#{rfBancoController.selected.bncId}" title="#{bundle.EditRfBancoTitle_bncId}" required="true" requiredMessage="#{bundle.EditRfBancoRequiredMessage_bncId}"/>
+                        <p:outputLabel value="#{bundle.EditRfBancoLabel_bncNombre}" for="bncNombre" />
+                        <p:inputText id="bncNombre" value="#{rfBancoController.selected.bncNombre}" title="#{bundle.EditRfBancoTitle_bncNombre}" required="true" requiredMessage="#{bundle.EditRfBancoRequiredMessage_bncNombre}"/>
+                        <p:outputLabel value="#{bundle.EditRfBancoLabel_bncDescripcion}" for="bncDescripcion" />
+                        <p:inputText id="bncDescripcion" value="#{rfBancoController.selected.bncDescripcion}" title="#{bundle.EditRfBancoTitle_bncDescripcion}" />
+                        <p:outputLabel value="#{bundle.EditRfBancoLabel_bncEstado}" for="bncEstado" />
+                        <p:selectBooleanCheckbox id="bncEstado" value="#{rfBancoController.selected.bncEstado}" required="true" requiredMessage="#{bundle.EditRfBancoRequiredMessage_bncEstado}"/>
+                        <p:outputLabel value="#{bundle.EditRfBancoLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{rfBancoController.selected.indversion}" title="#{bundle.EditRfBancoTitle_indversion}" required="true" requiredMessage="#{bundle.EditRfBancoRequiredMessage_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfBancoController.update}" value="#{bundle.Save}" update="display,:RfBancoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RfBancoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfBancoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

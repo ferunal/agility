@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvProductoCreateDlg" widgetVar="InvProductoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvProductoTitle}">
+            <h:form id="InvProductoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invProductoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdId}" for="prdId" />
+                        <p:inputText id="prdId" value="#{invProductoController.selected.prdId}" title="#{bundle.CreateInvProductoTitle_prdId}" required="true" requiredMessage="#{bundle.CreateInvProductoRequiredMessage_prdId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdNombre}" for="prdNombre" />
+                        <p:inputText id="prdNombre" value="#{invProductoController.selected.prdNombre}" title="#{bundle.CreateInvProductoTitle_prdNombre}" />
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdDesc}" for="prdDesc" />
+                        <p:inputText id="prdDesc" value="#{invProductoController.selected.prdDesc}" title="#{bundle.CreateInvProductoTitle_prdDesc}" />
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdEst}" for="prdEst" />
+                        <p:selectBooleanCheckbox id="prdEst" value="#{invProductoController.selected.prdEst}" required="true" requiredMessage="#{bundle.EditInvProductoRequiredMessage_prdEst}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invProductoController.selected.indversion}" title="#{bundle.CreateInvProductoTitle_indversion}" required="true" requiredMessage="#{bundle.CreateInvProductoRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdEsp}" for="prdEsp" />
+                        <p:selectBooleanCheckbox id="prdEsp" value="#{invProductoController.selected.prdEsp}" required="true" requiredMessage="#{bundle.EditInvProductoRequiredMessage_prdEsp}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdOcasnl}" for="prdOcasnl" />
+                        <p:selectBooleanCheckbox id="prdOcasnl" value="#{invProductoController.selected.prdOcasnl}" required="true" requiredMessage="#{bundle.EditInvProductoRequiredMessage_prdOcasnl}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_prdUnico}" for="prdUnico" />
+                        <p:selectBooleanCheckbox id="prdUnico" value="#{invProductoController.selected.prdUnico}" required="true" requiredMessage="#{bundle.EditInvProductoRequiredMessage_prdUnico}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProductoLabel_cpdId}" for="cpdId" />
+                        <p:selectOneMenu id="cpdId" value="#{invProductoController.selected.cpdId}" >
+                            <f:selectItems value="#{invCatprodController.itemsAvailableSelectOne}"
+                                           var="cpdIdItem"
+                                           itemValue="#{cpdIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invProductoController.create}" value="#{bundle.Save}" update="display,:InvProductoListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvProductoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvProductoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

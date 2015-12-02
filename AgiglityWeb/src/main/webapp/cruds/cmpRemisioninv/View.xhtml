@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpRemisioninvViewDlg" widgetVar="CmpRemisioninvViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpRemisioninvTitle}">
+            <h:form id="CmpRemisioninvViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpRemisioninvController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_rmiId}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.rmiId}" title="#{bundle.ViewCmpRemisioninvTitle_rmiId}"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_rmiFechaproceso}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.rmiFechaproceso}" title="#{bundle.ViewCmpRemisioninvTitle_rmiFechaproceso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_rmiFechaentrega}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.rmiFechaentrega}" title="#{bundle.ViewCmpRemisioninvTitle_rmiFechaentrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_rmiEst}"/>
+                        <p:selectBooleanCheckbox value="#{cmpRemisioninvController.selected.rmiEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_cxcIdorigen}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.cxcIdorigen}" title="#{bundle.ViewCmpRemisioninvTitle_cxcIdorigen}"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_cxcIddestino}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.cxcIddestino}" title="#{bundle.ViewCmpRemisioninvTitle_cxcIddestino}"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_indversion}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.indversion}" title="#{bundle.ViewCmpRemisioninvTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_strId}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.strId}" title="#{bundle.ViewCmpRemisioninvTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewCmpRemisioninvLabel_rmiObsrentrega}"/>
+                        <h:outputText value="#{cmpRemisioninvController.selected.rmiObsrentrega}" title="#{bundle.ViewCmpRemisioninvTitle_rmiObsrentrega}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpRemisioninvViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

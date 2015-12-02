@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvMarcaEditDlg" widgetVar="InvMarcaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInvMarcaTitle}">
+            <h:form id="InvMarcaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invMarcaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditInvMarcaLabel_marId}" for="marId" />
+                        <p:inputText id="marId" value="#{invMarcaController.selected.marId}" title="#{bundle.EditInvMarcaTitle_marId}" required="true" requiredMessage="#{bundle.EditInvMarcaRequiredMessage_marId}"/>
+                        <p:outputLabel value="#{bundle.EditInvMarcaLabel_marNombre}" for="marNombre" />
+                        <p:inputText id="marNombre" value="#{invMarcaController.selected.marNombre}" title="#{bundle.EditInvMarcaTitle_marNombre}" />
+                        <p:outputLabel value="#{bundle.EditInvMarcaLabel_marDesc}" for="marDesc" />
+                        <p:inputText id="marDesc" value="#{invMarcaController.selected.marDesc}" title="#{bundle.EditInvMarcaTitle_marDesc}" />
+                        <p:outputLabel value="#{bundle.EditInvMarcaLabel_marEst}" for="marEst" />
+                        <p:selectBooleanCheckbox id="marEst" value="#{invMarcaController.selected.marEst}" required="true" requiredMessage="#{bundle.EditInvMarcaRequiredMessage_marEst}"/>
+                        <p:outputLabel value="#{bundle.EditInvMarcaLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invMarcaController.selected.indversion}" title="#{bundle.EditInvMarcaTitle_indversion}" required="true" requiredMessage="#{bundle.EditInvMarcaRequiredMessage_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invMarcaController.update}" value="#{bundle.Save}" update="display,:InvMarcaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InvMarcaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvMarcaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

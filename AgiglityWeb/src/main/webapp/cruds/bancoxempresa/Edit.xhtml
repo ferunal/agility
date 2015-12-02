@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BancoxempresaEditDlg" widgetVar="BancoxempresaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBancoxempresaTitle}">
+            <h:form id="BancoxempresaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bancoxempresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_bxeId}" for="bxeId" />
+                        <p:inputText id="bxeId" value="#{bancoxempresaController.selected.bxeId}" title="#{bundle.EditBancoxempresaTitle_bxeId}" required="true" requiredMessage="#{bundle.EditBancoxempresaRequiredMessage_bxeId}"/>
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_bxeNumcuenta}" for="bxeNumcuenta" />
+                        <p:inputText id="bxeNumcuenta" value="#{bancoxempresaController.selected.bxeNumcuenta}" title="#{bundle.EditBancoxempresaTitle_bxeNumcuenta}" required="true" requiredMessage="#{bundle.EditBancoxempresaRequiredMessage_bxeNumcuenta}"/>
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_bxeEstado}" for="bxeEstado" />
+                        <p:selectBooleanCheckbox id="bxeEstado" value="#{bancoxempresaController.selected.bxeEstado}" />
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{bancoxempresaController.selected.indversion}" title="#{bundle.EditBancoxempresaTitle_indversion}" required="true" requiredMessage="#{bundle.EditBancoxempresaRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_bncId}" for="bncId" />
+                        <p:selectOneMenu id="bncId" value="#{bancoxempresaController.selected.bncId}" required="true" requiredMessage="#{bundle.EditBancoxempresaRequiredMessage_bncId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{rfBancoController.itemsAvailableSelectOne}"
+                                           var="bncIdItem"
+                                           itemValue="#{bncIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBancoxempresaLabel_tctId}" for="tctId" />
+                        <p:selectOneMenu id="tctId" value="#{bancoxempresaController.selected.tctId}" required="true" requiredMessage="#{bundle.EditBancoxempresaRequiredMessage_tctId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{rfTipocuentaController.itemsAvailableSelectOne}"
+                                           var="tctIdItem"
+                                           itemValue="#{tctIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bancoxempresaController.update}" value="#{bundle.Save}" update="display,:BancoxempresaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BancoxempresaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BancoxempresaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

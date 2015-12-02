@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfTipocuentaViewDlg" widgetVar="RfTipocuentaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRfTipocuentaTitle}">
+            <h:form id="RfTipocuentaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfTipocuentaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRfTipocuentaLabel_tctId}"/>
+                        <h:outputText value="#{rfTipocuentaController.selected.tctId}" title="#{bundle.ViewRfTipocuentaTitle_tctId}"/>
+                        <h:outputText value="#{bundle.ViewRfTipocuentaLabel_tctNombre}"/>
+                        <h:outputText value="#{rfTipocuentaController.selected.tctNombre}" title="#{bundle.ViewRfTipocuentaTitle_tctNombre}"/>
+                        <h:outputText value="#{bundle.ViewRfTipocuentaLabel_tctDescripcion}"/>
+                        <h:outputText value="#{rfTipocuentaController.selected.tctDescripcion}" title="#{bundle.ViewRfTipocuentaTitle_tctDescripcion}"/>
+                        <h:outputText value="#{bundle.ViewRfTipocuentaLabel_tctEstado}"/>
+                        <p:selectBooleanCheckbox value="#{rfTipocuentaController.selected.tctEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewRfTipocuentaLabel_indversion}"/>
+                        <h:outputText value="#{rfTipocuentaController.selected.indversion}" title="#{bundle.ViewRfTipocuentaTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RfTipocuentaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

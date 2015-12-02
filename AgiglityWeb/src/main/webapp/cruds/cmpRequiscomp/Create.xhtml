@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpRequiscompCreateDlg" widgetVar="CmpRequiscompCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCmpRequiscompTitle}">
+            <h:form id="CmpRequiscompCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpRequiscompController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_crqId}" for="crqId" />
+                        <p:inputText id="crqId" value="#{cmpRequiscompController.selected.crqId}" title="#{bundle.CreateCmpRequiscompTitle_crqId}" required="true" requiredMessage="#{bundle.CreateCmpRequiscompRequiredMessage_crqId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_cxcId}" for="cxcId" />
+                        <p:inputText id="cxcId" value="#{cmpRequiscompController.selected.cxcId}" title="#{bundle.CreateCmpRequiscompTitle_cxcId}" />
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_crqFproc}" for="crqFproc" />
+                        <p:calendar id="crqFproc" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpRequiscompController.selected.crqFproc}" title="#{bundle.EditCmpRequiscompTitle_crqFproc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_cqrEst}" for="cqrEst" />
+                        <p:selectBooleanCheckbox id="cqrEst" value="#{cmpRequiscompController.selected.cqrEst}" required="true" requiredMessage="#{bundle.EditCmpRequiscompRequiredMessage_cqrEst}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpRequiscompController.selected.indversion}" title="#{bundle.CreateCmpRequiscompTitle_indversion}" required="true" requiredMessage="#{bundle.CreateCmpRequiscompRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_crqRevisada}" for="crqRevisada" />
+                        <p:selectBooleanCheckbox id="crqRevisada" value="#{cmpRequiscompController.selected.crqRevisada}" required="true" requiredMessage="#{bundle.EditCmpRequiscompRequiredMessage_crqRevisada}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_crqAbierta}" for="crqAbierta" />
+                        <p:selectBooleanCheckbox id="crqAbierta" value="#{cmpRequiscompController.selected.crqAbierta}" required="true" requiredMessage="#{bundle.EditCmpRequiscompRequiredMessage_crqAbierta}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpRequiscompController.selected.strId}" title="#{bundle.CreateCmpRequiscompTitle_strId}" />
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_crqAprobado}" for="crqAprobado" />
+                        <p:selectBooleanCheckbox id="crqAprobado" value="#{cmpRequiscompController.selected.crqAprobado}" required="true" requiredMessage="#{bundle.EditCmpRequiscompRequiredMessage_crqAprobado}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_iseId}" for="iseId" />
+                        <p:inputText id="iseId" value="#{cmpRequiscompController.selected.iseId}" title="#{bundle.CreateCmpRequiscompTitle_iseId}" />
+                        <p:outputLabel value="#{bundle.CreateCmpRequiscompLabel_trqId}" for="trqId" />
+                        <p:selectOneMenu id="trqId" value="#{cmpRequiscompController.selected.trqId}" >
+                            <f:selectItems value="#{cmpRfTiporequisicionController.itemsAvailableSelectOne}"
+                                           var="trqIdItem"
+                                           itemValue="#{trqIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpRequiscompController.create}" value="#{bundle.Save}" update="display,:CmpRequiscompListForm:datalist,:growl" oncomplete="handleSubmit(args,'CmpRequiscompCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpRequiscompCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

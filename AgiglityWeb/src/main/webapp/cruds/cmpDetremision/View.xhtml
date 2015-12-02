@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpDetremisionViewDlg" widgetVar="CmpDetremisionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpDetremisionTitle}">
+            <h:form id="CmpDetremisionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpDetremisionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_drmId}"/>
+                        <h:outputText value="#{cmpDetremisionController.selected.drmId}" title="#{bundle.ViewCmpDetremisionTitle_drmId}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_drmProcentregado}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetremisionController.selected.drmProcentregado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_drmProcinventario}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetremisionController.selected.drmProcinventario}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_drmEst}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetremisionController.selected.drmEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_indversion}"/>
+                        <h:outputText value="#{cmpDetremisionController.selected.indversion}" title="#{bundle.ViewCmpDetremisionTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_praId}"/>
+                        <h:outputText value="#{cmpDetremisionController.selected.praId}" title="#{bundle.ViewCmpDetremisionTitle_praId}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_rmiId}"/>
+                        <h:outputText value="#{cmpDetremisionController.selected.rmiId}" title="#{bundle.ViewCmpDetremisionTitle_rmiId}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetremisionLabel_invId}"/>
+                        <h:outputText value="#{cmpDetremisionController.selected.invId}" title="#{bundle.ViewCmpDetremisionTitle_invId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpDetremisionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

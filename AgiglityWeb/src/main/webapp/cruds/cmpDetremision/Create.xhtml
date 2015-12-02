@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpDetremisionCreateDlg" widgetVar="CmpDetremisionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCmpDetremisionTitle}">
+            <h:form id="CmpDetremisionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpDetremisionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_drmId}" for="drmId" />
+                        <p:inputText id="drmId" value="#{cmpDetremisionController.selected.drmId}" title="#{bundle.CreateCmpDetremisionTitle_drmId}" required="true" requiredMessage="#{bundle.CreateCmpDetremisionRequiredMessage_drmId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_drmProcentregado}" for="drmProcentregado" />
+                        <p:selectBooleanCheckbox id="drmProcentregado" value="#{cmpDetremisionController.selected.drmProcentregado}" />
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_drmProcinventario}" for="drmProcinventario" />
+                        <p:selectBooleanCheckbox id="drmProcinventario" value="#{cmpDetremisionController.selected.drmProcinventario}" />
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_drmEst}" for="drmEst" />
+                        <p:selectBooleanCheckbox id="drmEst" value="#{cmpDetremisionController.selected.drmEst}" />
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpDetremisionController.selected.indversion}" title="#{bundle.CreateCmpDetremisionTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_praId}" for="praId" />
+                        <p:selectOneMenu id="praId" value="#{cmpDetremisionController.selected.praId}" >
+                            <f:selectItems value="#{cmpPxraprobController.itemsAvailableSelectOne}"
+                                           var="praIdItem"
+                                           itemValue="#{praIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_rmiId}" for="rmiId" />
+                        <p:selectOneMenu id="rmiId" value="#{cmpDetremisionController.selected.rmiId}" >
+                            <f:selectItems value="#{cmpRemisioninvController.itemsAvailableSelectOne}"
+                                           var="rmiIdItem"
+                                           itemValue="#{rmiIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpDetremisionLabel_invId}" for="invId" />
+                        <p:selectOneMenu id="invId" value="#{cmpDetremisionController.selected.invId}" >
+                            <f:selectItems value="#{invInventController.itemsAvailableSelectOne}"
+                                           var="invIdItem"
+                                           itemValue="#{invIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpDetremisionController.create}" value="#{bundle.Save}" update="display,:CmpDetremisionListForm:datalist,:growl" oncomplete="handleSubmit(args,'CmpDetremisionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpDetremisionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

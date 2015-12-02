@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpFacturaViewDlg" widgetVar="CmpFacturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpFacturaTitle}">
+            <h:form id="CmpFacturaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpFacturaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factId}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factId}" title="#{bundle.ViewCmpFacturaTitle_factId}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factNumfact}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factNumfact}" title="#{bundle.ViewCmpFacturaTitle_factNumfact}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factPrefact}"/>
+                        <p:selectBooleanCheckbox value="#{cmpFacturaController.selected.factPrefact}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factValorbruto}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factValorbruto}" title="#{bundle.ViewCmpFacturaTitle_factValorbruto}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factValorneto}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factValorneto}" title="#{bundle.ViewCmpFacturaTitle_factValorneto}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factEst}"/>
+                        <p:selectBooleanCheckbox value="#{cmpFacturaController.selected.factEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_strId}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.strId}" title="#{bundle.ViewCmpFacturaTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_cxcId}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.cxcId}" title="#{bundle.ViewCmpFacturaTitle_cxcId}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factFechaproceso}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factFechaproceso}" title="#{bundle.ViewCmpFacturaTitle_factFechaproceso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_indversion}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.indversion}" title="#{bundle.ViewCmpFacturaTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factPrevalorbruto}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factPrevalorbruto}" title="#{bundle.ViewCmpFacturaTitle_factPrevalorbruto}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factProcesadorecibido}"/>
+                        <p:selectBooleanCheckbox value="#{cmpFacturaController.selected.factProcesadorecibido}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factProcesadocargainv}"/>
+                        <p:selectBooleanCheckbox value="#{cmpFacturaController.selected.factProcesadocargainv}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factEnvpagocuenta}"/>
+                        <p:selectBooleanCheckbox value="#{cmpFacturaController.selected.factEnvpagocuenta}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factAnticipo}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factAnticipo}" title="#{bundle.ViewCmpFacturaTitle_factAnticipo}"/>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_factFechamaxentrega}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.factFechamaxentrega}" title="#{bundle.ViewCmpFacturaTitle_factFechamaxentrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpFacturaLabel_prvId}"/>
+                        <h:outputText value="#{cmpFacturaController.selected.prvId}" title="#{bundle.ViewCmpFacturaTitle_prvId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpFacturaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

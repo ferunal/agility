@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvInventViewDlg" widgetVar="InvInventViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvInventTitle}">
+            <h:form id="InvInventViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invInventController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvInventLabel_invId}"/>
+                        <h:outputText value="#{invInventController.selected.invId}" title="#{bundle.ViewInvInventTitle_invId}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_invPrecio}"/>
+                        <h:outputText value="#{invInventController.selected.invPrecio}" title="#{bundle.ViewInvInventTitle_invPrecio}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_invCant}"/>
+                        <h:outputText value="#{invInventController.selected.invCant}" title="#{bundle.ViewInvInventTitle_invCant}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_indversion}"/>
+                        <h:outputText value="#{invInventController.selected.indversion}" title="#{bundle.ViewInvInventTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_invFechaingreso}"/>
+                        <h:outputText value="#{invInventController.selected.invFechaingreso}" title="#{bundle.ViewInvInventTitle_invFechaingreso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_invFechaegreso}"/>
+                        <h:outputText value="#{invInventController.selected.invFechaegreso}" title="#{bundle.ViewInvInventTitle_invFechaegreso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_marId}"/>
+                        <h:outputText value="#{invInventController.selected.marId}" title="#{bundle.ViewInvInventTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_pspId}"/>
+                        <h:outputText value="#{invInventController.selected.pspId}" title="#{bundle.ViewInvInventTitle_pspId}"/>
+                        <h:outputText value="#{bundle.ViewInvInventLabel_prdId}"/>
+                        <h:outputText value="#{invInventController.selected.prdId}" title="#{bundle.ViewInvInventTitle_prdId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvInventViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

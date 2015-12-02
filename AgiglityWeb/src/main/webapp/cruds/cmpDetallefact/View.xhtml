@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpDetallefactViewDlg" widgetVar="CmpDetallefactViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpDetallefactTitle}">
+            <h:form id="CmpDetallefactViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpDetallefactController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfId}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.detfId}" title="#{bundle.ViewCmpDetallefactTitle_detfId}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfCantrecibida}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.detfCantrecibida}" title="#{bundle.ViewCmpDetallefactTitle_detfCantrecibida}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfRecibido}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetallefactController.selected.detfRecibido}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfEst}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetallefactController.selected.detfEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_indversion}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.indversion}" title="#{bundle.ViewCmpDetallefactTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfValorunitario}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.detfValorunitario}" title="#{bundle.ViewCmpDetallefactTitle_detfValorunitario}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfFecharecibido}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.detfFecharecibido}" title="#{bundle.ViewCmpDetallefactTitle_detfFecharecibido}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfProcesadorecibido}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetallefactController.selected.detfProcesadorecibido}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfProcesadocargainv}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetallefactController.selected.detfProcesadocargainv}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfDevolucion}"/>
+                        <p:selectBooleanCheckbox value="#{cmpDetallefactController.selected.detfDevolucion}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_detfObservacion}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.detfObservacion}" title="#{bundle.ViewCmpDetallefactTitle_detfObservacion}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_ccmId}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.ccmId}" title="#{bundle.ViewCmpDetallefactTitle_ccmId}"/>
+                        <h:outputText value="#{bundle.ViewCmpDetallefactLabel_factId}"/>
+                        <h:outputText value="#{cmpDetallefactController.selected.factId}" title="#{bundle.ViewCmpDetallefactTitle_factId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpDetallefactViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

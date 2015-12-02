@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpConsolcompraViewDlg" widgetVar="CmpConsolcompraViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpConsolcompraTitle}">
+            <h:form id="CmpConsolcompraViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpConsolcompraController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmId}" title="#{bundle.ViewCmpConsolcompraTitle_ccmId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmFecproc}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmFecproc}" title="#{bundle.ViewCmpConsolcompraTitle_ccmFecproc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmCant}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmCant}" title="#{bundle.ViewCmpConsolcompraTitle_ccmCant}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmPrecio}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmPrecio}" title="#{bundle.ViewCmpConsolcompraTitle_ccmPrecio}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_fpgId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.fpgId}" title="#{bundle.ViewCmpConsolcompraTitle_fpgId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_strId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.strId}" title="#{bundle.ViewCmpConsolcompraTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_cpeId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.cpeId}" title="#{bundle.ViewCmpConsolcompraTitle_cpeId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmFechavenfactura}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmFechavenfactura}" title="#{bundle.ViewCmpConsolcompraTitle_ccmFechavenfactura}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccmPreciototal}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccmPreciototal}" title="#{bundle.ViewCmpConsolcompraTitle_ccmPreciototal}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_ccpId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.ccpId}" title="#{bundle.ViewCmpConsolcompraTitle_ccpId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_marId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.marId}" title="#{bundle.ViewCmpConsolcompraTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_pspId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.pspId}" title="#{bundle.ViewCmpConsolcompraTitle_pspId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_prdId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.prdId}" title="#{bundle.ViewCmpConsolcompraTitle_prdId}"/>
+                        <h:outputText value="#{bundle.ViewCmpConsolcompraLabel_prvId}"/>
+                        <h:outputText value="#{cmpConsolcompraController.selected.prvId}" title="#{bundle.ViewCmpConsolcompraTitle_prvId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpConsolcompraViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpDetallefactEditDlg" widgetVar="CmpDetallefactEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCmpDetallefactTitle}">
+            <h:form id="CmpDetallefactEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpDetallefactController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfId}" for="detfId" />
+                        <p:inputText id="detfId" value="#{cmpDetallefactController.selected.detfId}" title="#{bundle.EditCmpDetallefactTitle_detfId}" required="true" requiredMessage="#{bundle.EditCmpDetallefactRequiredMessage_detfId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfCantrecibida}" for="detfCantrecibida" />
+                        <p:inputText id="detfCantrecibida" value="#{cmpDetallefactController.selected.detfCantrecibida}" title="#{bundle.EditCmpDetallefactTitle_detfCantrecibida}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfRecibido}" for="detfRecibido" />
+                        <p:selectBooleanCheckbox id="detfRecibido" value="#{cmpDetallefactController.selected.detfRecibido}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfEst}" for="detfEst" />
+                        <p:selectBooleanCheckbox id="detfEst" value="#{cmpDetallefactController.selected.detfEst}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpDetallefactController.selected.indversion}" title="#{bundle.EditCmpDetallefactTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfValorunitario}" for="detfValorunitario" />
+                        <p:inputText id="detfValorunitario" value="#{cmpDetallefactController.selected.detfValorunitario}" title="#{bundle.EditCmpDetallefactTitle_detfValorunitario}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfFecharecibido}" for="detfFecharecibido" />
+                        <p:calendar id="detfFecharecibido" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpDetallefactController.selected.detfFecharecibido}" title="#{bundle.EditCmpDetallefactTitle_detfFecharecibido}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfProcesadorecibido}" for="detfProcesadorecibido" />
+                        <p:selectBooleanCheckbox id="detfProcesadorecibido" value="#{cmpDetallefactController.selected.detfProcesadorecibido}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfProcesadocargainv}" for="detfProcesadocargainv" />
+                        <p:selectBooleanCheckbox id="detfProcesadocargainv" value="#{cmpDetallefactController.selected.detfProcesadocargainv}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfDevolucion}" for="detfDevolucion" />
+                        <p:selectBooleanCheckbox id="detfDevolucion" value="#{cmpDetallefactController.selected.detfDevolucion}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_detfObservacion}" for="detfObservacion" />
+                        <p:inputText id="detfObservacion" value="#{cmpDetallefactController.selected.detfObservacion}" title="#{bundle.EditCmpDetallefactTitle_detfObservacion}" />
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_ccmId}" for="ccmId" />
+                        <p:selectOneMenu id="ccmId" value="#{cmpDetallefactController.selected.ccmId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cmpConsolcompraController.itemsAvailableSelectOne}"
+                                           var="ccmIdItem"
+                                           itemValue="#{ccmIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCmpDetallefactLabel_factId}" for="factId" />
+                        <p:selectOneMenu id="factId" value="#{cmpDetallefactController.selected.factId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cmpFacturaController.itemsAvailableSelectOne}"
+                                           var="factIdItem"
+                                           itemValue="#{factIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpDetallefactController.update}" value="#{bundle.Save}" update="display,:CmpDetallefactListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CmpDetallefactEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpDetallefactEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

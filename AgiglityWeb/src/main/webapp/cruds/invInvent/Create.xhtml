@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvInventCreateDlg" widgetVar="InvInventCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvInventTitle}">
+            <h:form id="InvInventCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invInventController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_invId}" for="invId" />
+                        <p:inputText id="invId" value="#{invInventController.selected.invId}" title="#{bundle.CreateInvInventTitle_invId}" required="true" requiredMessage="#{bundle.CreateInvInventRequiredMessage_invId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_invPrecio}" for="invPrecio" />
+                        <p:inputText id="invPrecio" value="#{invInventController.selected.invPrecio}" title="#{bundle.CreateInvInventTitle_invPrecio}" />
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_invCant}" for="invCant" />
+                        <p:inputText id="invCant" value="#{invInventController.selected.invCant}" title="#{bundle.CreateInvInventTitle_invCant}" />
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invInventController.selected.indversion}" title="#{bundle.CreateInvInventTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_invFechaingreso}" for="invFechaingreso" />
+                        <p:calendar id="invFechaingreso" pattern="MM/dd/yyyy" value="#{invInventController.selected.invFechaingreso}" title="#{bundle.EditInvInventTitle_invFechaingreso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_invFechaegreso}" for="invFechaegreso" />
+                        <p:calendar id="invFechaegreso" pattern="MM/dd/yyyy" value="#{invInventController.selected.invFechaegreso}" title="#{bundle.EditInvInventTitle_invFechaegreso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{invInventController.selected.marId}" >
+                            <f:selectItems value="#{invMarcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_pspId}" for="pspId" />
+                        <p:selectOneMenu id="pspId" value="#{invInventController.selected.pspId}" >
+                            <f:selectItems value="#{invPresentprodController.itemsAvailableSelectOne}"
+                                           var="pspIdItem"
+                                           itemValue="#{pspIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvInventLabel_prdId}" for="prdId" />
+                        <p:selectOneMenu id="prdId" value="#{invInventController.selected.prdId}" >
+                            <f:selectItems value="#{invProductoController.itemsAvailableSelectOne}"
+                                           var="prdIdItem"
+                                           itemValue="#{prdIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invInventController.create}" value="#{bundle.Save}" update="display,:InvInventListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvInventCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvInventCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

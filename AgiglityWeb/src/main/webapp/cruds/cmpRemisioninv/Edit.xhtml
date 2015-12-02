@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpRemisioninvEditDlg" widgetVar="CmpRemisioninvEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCmpRemisioninvTitle}">
+            <h:form id="CmpRemisioninvEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpRemisioninvController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_rmiId}" for="rmiId" />
+                        <p:inputText id="rmiId" value="#{cmpRemisioninvController.selected.rmiId}" title="#{bundle.EditCmpRemisioninvTitle_rmiId}" required="true" requiredMessage="#{bundle.EditCmpRemisioninvRequiredMessage_rmiId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_rmiFechaproceso}" for="rmiFechaproceso" />
+                        <p:calendar id="rmiFechaproceso" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpRemisioninvController.selected.rmiFechaproceso}" title="#{bundle.EditCmpRemisioninvTitle_rmiFechaproceso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_rmiFechaentrega}" for="rmiFechaentrega" />
+                        <p:calendar id="rmiFechaentrega" pattern="MM/dd/yyyy" value="#{cmpRemisioninvController.selected.rmiFechaentrega}" title="#{bundle.EditCmpRemisioninvTitle_rmiFechaentrega}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_rmiEst}" for="rmiEst" />
+                        <p:selectBooleanCheckbox id="rmiEst" value="#{cmpRemisioninvController.selected.rmiEst}" />
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_cxcIdorigen}" for="cxcIdorigen" />
+                        <p:inputText id="cxcIdorigen" value="#{cmpRemisioninvController.selected.cxcIdorigen}" title="#{bundle.EditCmpRemisioninvTitle_cxcIdorigen}" />
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_cxcIddestino}" for="cxcIddestino" />
+                        <p:inputText id="cxcIddestino" value="#{cmpRemisioninvController.selected.cxcIddestino}" title="#{bundle.EditCmpRemisioninvTitle_cxcIddestino}" />
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpRemisioninvController.selected.indversion}" title="#{bundle.EditCmpRemisioninvTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpRemisioninvController.selected.strId}" title="#{bundle.EditCmpRemisioninvTitle_strId}" />
+                        <p:outputLabel value="#{bundle.EditCmpRemisioninvLabel_rmiObsrentrega}" for="rmiObsrentrega" />
+                        <p:inputText id="rmiObsrentrega" value="#{cmpRemisioninvController.selected.rmiObsrentrega}" title="#{bundle.EditCmpRemisioninvTitle_rmiObsrentrega}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpRemisioninvController.update}" value="#{bundle.Save}" update="display,:CmpRemisioninvListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CmpRemisioninvEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpRemisioninvEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

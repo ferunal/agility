@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpPxraprobViewDlg" widgetVar="CmpPxraprobViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpPxraprobTitle}">
+            <h:form id="CmpPxraprobViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpPxraprobController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_praId}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.praId}" title="#{bundle.ViewCmpPxraprobTitle_praId}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_cantAprob}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.cantAprob}" title="#{bundle.ViewCmpPxraprobTitle_cantAprob}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_praEst}"/>
+                        <p:selectBooleanCheckbox value="#{cmpPxraprobController.selected.praEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_indversion}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.indversion}" title="#{bundle.ViewCmpPxraprobTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_strId}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.strId}" title="#{bundle.ViewCmpPxraprobTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_pxrId}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.pxrId}" title="#{bundle.ViewCmpPxraprobTitle_pxrId}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_marId}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.marId}" title="#{bundle.ViewCmpPxraprobTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewCmpPxraprobLabel_pspId}"/>
+                        <h:outputText value="#{cmpPxraprobController.selected.pspId}" title="#{bundle.ViewCmpPxraprobTitle_pspId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpPxraprobViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

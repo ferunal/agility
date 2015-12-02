@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvProductoViewDlg" widgetVar="InvProductoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvProductoTitle}">
+            <h:form id="InvProductoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invProductoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdId}"/>
+                        <h:outputText value="#{invProductoController.selected.prdId}" title="#{bundle.ViewInvProductoTitle_prdId}"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdNombre}"/>
+                        <h:outputText value="#{invProductoController.selected.prdNombre}" title="#{bundle.ViewInvProductoTitle_prdNombre}"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdDesc}"/>
+                        <h:outputText value="#{invProductoController.selected.prdDesc}" title="#{bundle.ViewInvProductoTitle_prdDesc}"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdEst}"/>
+                        <p:selectBooleanCheckbox value="#{invProductoController.selected.prdEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_indversion}"/>
+                        <h:outputText value="#{invProductoController.selected.indversion}" title="#{bundle.ViewInvProductoTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdEsp}"/>
+                        <p:selectBooleanCheckbox value="#{invProductoController.selected.prdEsp}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdOcasnl}"/>
+                        <p:selectBooleanCheckbox value="#{invProductoController.selected.prdOcasnl}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_prdUnico}"/>
+                        <p:selectBooleanCheckbox value="#{invProductoController.selected.prdUnico}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvProductoLabel_cpdId}"/>
+                        <h:outputText value="#{invProductoController.selected.cpdId}" title="#{bundle.ViewInvProductoTitle_cpdId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvProductoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

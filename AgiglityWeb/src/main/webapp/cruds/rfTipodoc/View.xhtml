@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfTipodocViewDlg" widgetVar="RfTipodocViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRfTipodocTitle}">
+            <h:form id="RfTipodocViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfTipodocController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRfTipodocLabel_tdcId}"/>
+                        <h:outputText value="#{rfTipodocController.selected.tdcId}" title="#{bundle.ViewRfTipodocTitle_tdcId}"/>
+                        <h:outputText value="#{bundle.ViewRfTipodocLabel_tdcNombre}"/>
+                        <h:outputText value="#{rfTipodocController.selected.tdcNombre}" title="#{bundle.ViewRfTipodocTitle_tdcNombre}"/>
+                        <h:outputText value="#{bundle.ViewRfTipodocLabel_tdcEstado}"/>
+                        <p:selectBooleanCheckbox value="#{rfTipodocController.selected.tdcEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewRfTipodocLabel_indversion}"/>
+                        <h:outputText value="#{rfTipodocController.selected.indversion}" title="#{bundle.ViewRfTipodocTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RfTipodocViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

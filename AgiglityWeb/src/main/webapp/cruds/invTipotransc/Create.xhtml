@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvTipotranscCreateDlg" widgetVar="InvTipotranscCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvTipotranscTitle}">
+            <h:form id="InvTipotranscCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invTipotranscController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvTipotranscLabel_ttrId}" for="ttrId" />
+                        <p:inputText id="ttrId" value="#{invTipotranscController.selected.ttrId}" title="#{bundle.CreateInvTipotranscTitle_ttrId}" required="true" requiredMessage="#{bundle.CreateInvTipotranscRequiredMessage_ttrId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvTipotranscLabel_ttrNombre}" for="ttrNombre" />
+                        <p:inputText id="ttrNombre" value="#{invTipotranscController.selected.ttrNombre}" title="#{bundle.CreateInvTipotranscTitle_ttrNombre}" />
+                        <p:outputLabel value="#{bundle.CreateInvTipotranscLabel_ttrDesc}" for="ttrDesc" />
+                        <p:inputText id="ttrDesc" value="#{invTipotranscController.selected.ttrDesc}" title="#{bundle.CreateInvTipotranscTitle_ttrDesc}" />
+                        <p:outputLabel value="#{bundle.CreateInvTipotranscLabel_ttrEst}" for="ttrEst" />
+                        <p:selectBooleanCheckbox id="ttrEst" value="#{invTipotranscController.selected.ttrEst}" required="true" requiredMessage="#{bundle.EditInvTipotranscRequiredMessage_ttrEst}"/>
+                        <p:outputLabel value="#{bundle.CreateInvTipotranscLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invTipotranscController.selected.indversion}" title="#{bundle.CreateInvTipotranscTitle_indversion}" required="true" requiredMessage="#{bundle.CreateInvTipotranscRequiredMessage_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invTipotranscController.create}" value="#{bundle.Save}" update="display,:InvTipotranscListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvTipotranscCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvTipotranscCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

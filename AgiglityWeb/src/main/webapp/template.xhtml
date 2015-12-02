@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Bancoxempresa" outcome="/cruds/bancoxempresa/List.xhtml" />
+                            <p:menuitem value="CmpConsolcompra" outcome="/cruds/cmpConsolcompra/List.xhtml" />
+                            <p:menuitem value="CmpConspedido" outcome="/cruds/cmpConspedido/List.xhtml" />
+                            <p:menuitem value="CmpDetallefact" outcome="/cruds/cmpDetallefact/List.xhtml" />
+                            <p:menuitem value="CmpDetremision" outcome="/cruds/cmpDetremision/List.xhtml" />
+                            <p:menuitem value="CmpEntregapedido" outcome="/cruds/cmpEntregapedido/List.xhtml" />
+                            <p:menuitem value="CmpFactura" outcome="/cruds/cmpFactura/List.xhtml" />
+                            <p:menuitem value="CmpProdxreq" outcome="/cruds/cmpProdxreq/List.xhtml" />
+                            <p:menuitem value="CmpPxraprob" outcome="/cruds/cmpPxraprob/List.xhtml" />
+                            <p:menuitem value="CmpRemisioninv" outcome="/cruds/cmpRemisioninv/List.xhtml" />
+                            <p:menuitem value="CmpRequiscomp" outcome="/cruds/cmpRequiscomp/List.xhtml" />
+                            <p:menuitem value="CmpRfTiporequisicion" outcome="/cruds/cmpRfTiporequisicion/List.xhtml" />
+                            <p:menuitem value="InvAsignaequnico" outcome="/cruds/invAsignaequnico/List.xhtml" />
+                            <p:menuitem value="InvBancoxprov" outcome="/cruds/invBancoxprov/List.xhtml" />
+                            <p:menuitem value="InvCatprod" outcome="/cruds/invCatprod/List.xhtml" />
+                            <p:menuitem value="InvDetinv" outcome="/cruds/invDetinv/List.xhtml" />
+                            <p:menuitem value="InvInvent" outcome="/cruds/invInvent/List.xhtml" />
+                            <p:menuitem value="InvMarca" outcome="/cruds/invMarca/List.xhtml" />
+                            <p:menuitem value="InvMarcxprod" outcome="/cruds/invMarcxprod/List.xhtml" />
+                            <p:menuitem value="InvPresentprod" outcome="/cruds/invPresentprod/List.xhtml" />
+                            <p:menuitem value="InvPresntxprod" outcome="/cruds/invPresntxprod/List.xhtml" />
+                            <p:menuitem value="InvProducto" outcome="/cruds/invProducto/List.xhtml" />
+                            <p:menuitem value="InvProdxprov" outcome="/cruds/invProdxprov/List.xhtml" />
+                            <p:menuitem value="InvProovedor" outcome="/cruds/invProovedor/List.xhtml" />
+                            <p:menuitem value="InvTipotransc" outcome="/cruds/invTipotransc/List.xhtml" />
+                            <p:menuitem value="InvTransac" outcome="/cruds/invTransac/List.xhtml" />
+                            <p:menuitem value="RfBanco" outcome="/cruds/rfBanco/List.xhtml" />
+                            <p:menuitem value="RfBarrio" outcome="/cruds/rfBarrio/List.xhtml" />
+                            <p:menuitem value="RfCiudad" outcome="/cruds/rfCiudad/List.xhtml" />
+                            <p:menuitem value="RfDep" outcome="/cruds/rfDep/List.xhtml" />
+                            <p:menuitem value="RfLocalidad" outcome="/cruds/rfLocalidad/List.xhtml" />
+                            <p:menuitem value="RfTipocuenta" outcome="/cruds/rfTipocuenta/List.xhtml" />
+                            <p:menuitem value="RfTipodoc" outcome="/cruds/rfTipodoc/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

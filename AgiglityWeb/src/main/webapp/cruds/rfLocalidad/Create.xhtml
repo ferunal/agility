@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfLocalidadCreateDlg" widgetVar="RfLocalidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRfLocalidadTitle}">
+            <h:form id="RfLocalidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfLocalidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRfLocalidadLabel_locId}" for="locId" />
+                        <p:inputText id="locId" value="#{rfLocalidadController.selected.locId}" title="#{bundle.CreateRfLocalidadTitle_locId}" required="true" requiredMessage="#{bundle.CreateRfLocalidadRequiredMessage_locId}"/>
+                        <p:outputLabel value="#{bundle.CreateRfLocalidadLabel_locDesc}" for="locDesc" />
+                        <p:inputText id="locDesc" value="#{rfLocalidadController.selected.locDesc}" title="#{bundle.CreateRfLocalidadTitle_locDesc}" required="true" requiredMessage="#{bundle.CreateRfLocalidadRequiredMessage_locDesc}"/>
+                        <p:outputLabel value="#{bundle.CreateRfLocalidadLabel_locCod}" for="locCod" />
+                        <p:inputText id="locCod" value="#{rfLocalidadController.selected.locCod}" title="#{bundle.CreateRfLocalidadTitle_locCod}" required="true" requiredMessage="#{bundle.CreateRfLocalidadRequiredMessage_locCod}"/>
+                        <p:outputLabel value="#{bundle.CreateRfLocalidadLabel_ciuId}" for="ciuId" />
+                        <p:selectOneMenu id="ciuId" value="#{rfLocalidadController.selected.ciuId}" required="true" requiredMessage="#{bundle.EditRfLocalidadRequiredMessage_ciuId}">
+                            <f:selectItems value="#{rfCiudadController.itemsAvailableSelectOne}"
+                                           var="ciuIdItem"
+                                           itemValue="#{ciuIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfLocalidadController.create}" value="#{bundle.Save}" update="display,:RfLocalidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'RfLocalidadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfLocalidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

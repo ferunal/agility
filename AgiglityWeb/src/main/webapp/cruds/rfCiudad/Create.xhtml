@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfCiudadCreateDlg" widgetVar="RfCiudadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRfCiudadTitle}">
+            <h:form id="RfCiudadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfCiudadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRfCiudadLabel_ciuId}" for="ciuId" />
+                        <p:inputText id="ciuId" value="#{rfCiudadController.selected.ciuId}" title="#{bundle.CreateRfCiudadTitle_ciuId}" required="true" requiredMessage="#{bundle.CreateRfCiudadRequiredMessage_ciuId}"/>
+                        <p:outputLabel value="#{bundle.CreateRfCiudadLabel_ciuCod}" for="ciuCod" />
+                        <p:inputText id="ciuCod" value="#{rfCiudadController.selected.ciuCod}" title="#{bundle.CreateRfCiudadTitle_ciuCod}" required="true" requiredMessage="#{bundle.CreateRfCiudadRequiredMessage_ciuCod}"/>
+                        <p:outputLabel value="#{bundle.CreateRfCiudadLabel_ciuDesc}" for="ciuDesc" />
+                        <p:inputText id="ciuDesc" value="#{rfCiudadController.selected.ciuDesc}" title="#{bundle.CreateRfCiudadTitle_ciuDesc}" required="true" requiredMessage="#{bundle.CreateRfCiudadRequiredMessage_ciuDesc}"/>
+                        <p:outputLabel value="#{bundle.CreateRfCiudadLabel_depId}" for="depId" />
+                        <p:selectOneMenu id="depId" value="#{rfCiudadController.selected.depId}" required="true" requiredMessage="#{bundle.EditRfCiudadRequiredMessage_depId}">
+                            <f:selectItems value="#{rfDepController.itemsAvailableSelectOne}"
+                                           var="depIdItem"
+                                           itemValue="#{depIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfCiudadController.create}" value="#{bundle.Save}" update="display,:RfCiudadListForm:datalist,:growl" oncomplete="handleSubmit(args,'RfCiudadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfCiudadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

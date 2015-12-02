@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListInvBancoxprovTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="InvBancoxprovListForm">
+                <p:panel header="#{bundle.ListInvBancoxprovTitle}">
+                    <p:dataTable id="datalist" value="#{invBancoxprovController.items}" var="item"
+                                 selectionMode="single" selection="#{invBancoxprovController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.bxpId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_bxpId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bxpId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_bxpNumcuenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bxpNumcuenta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_bxpEstado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.bxpEstado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_indversion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.indversion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_bxeAplica}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.bxeAplica}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_prvId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prvId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_bncId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bncId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvBancoxprovTitle_tctId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tctId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{invBancoxprovController.prepareCreate}" update=":InvBancoxprovCreateForm" oncomplete="PF('InvBancoxprovCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":InvBancoxprovViewForm" oncomplete="PF('InvBancoxprovViewDialog').show()" disabled="#{empty invBancoxprovController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":InvBancoxprovEditForm" oncomplete="PF('InvBancoxprovEditDialog').show()" disabled="#{empty invBancoxprovController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{invBancoxprovController.destroy}" update=":growl,datalist" disabled="#{empty invBancoxprovController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

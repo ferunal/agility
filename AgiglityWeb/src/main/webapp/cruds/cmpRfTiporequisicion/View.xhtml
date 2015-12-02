@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpRfTiporequisicionViewDlg" widgetVar="CmpRfTiporequisicionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpRfTiporequisicionTitle}">
+            <h:form id="CmpRfTiporequisicionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpRfTiporequisicionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpRfTiporequisicionLabel_trqId}"/>
+                        <h:outputText value="#{cmpRfTiporequisicionController.selected.trqId}" title="#{bundle.ViewCmpRfTiporequisicionTitle_trqId}"/>
+                        <h:outputText value="#{bundle.ViewCmpRfTiporequisicionLabel_trqNombre}"/>
+                        <h:outputText value="#{cmpRfTiporequisicionController.selected.trqNombre}" title="#{bundle.ViewCmpRfTiporequisicionTitle_trqNombre}"/>
+                        <h:outputText value="#{bundle.ViewCmpRfTiporequisicionLabel_trqDescripcion}"/>
+                        <h:outputText value="#{cmpRfTiporequisicionController.selected.trqDescripcion}" title="#{bundle.ViewCmpRfTiporequisicionTitle_trqDescripcion}"/>
+                        <h:outputText value="#{bundle.ViewCmpRfTiporequisicionLabel_trqEstado}"/>
+                        <p:selectBooleanCheckbox value="#{cmpRfTiporequisicionController.selected.trqEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpRfTiporequisicionLabel_indversion}"/>
+                        <h:outputText value="#{cmpRfTiporequisicionController.selected.indversion}" title="#{bundle.ViewCmpRfTiporequisicionTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpRfTiporequisicionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

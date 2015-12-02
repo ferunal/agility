@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfBancoViewDlg" widgetVar="RfBancoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRfBancoTitle}">
+            <h:form id="RfBancoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfBancoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRfBancoLabel_bncId}"/>
+                        <h:outputText value="#{rfBancoController.selected.bncId}" title="#{bundle.ViewRfBancoTitle_bncId}"/>
+                        <h:outputText value="#{bundle.ViewRfBancoLabel_bncNombre}"/>
+                        <h:outputText value="#{rfBancoController.selected.bncNombre}" title="#{bundle.ViewRfBancoTitle_bncNombre}"/>
+                        <h:outputText value="#{bundle.ViewRfBancoLabel_bncDescripcion}"/>
+                        <h:outputText value="#{rfBancoController.selected.bncDescripcion}" title="#{bundle.ViewRfBancoTitle_bncDescripcion}"/>
+                        <h:outputText value="#{bundle.ViewRfBancoLabel_bncEstado}"/>
+                        <p:selectBooleanCheckbox value="#{rfBancoController.selected.bncEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewRfBancoLabel_indversion}"/>
+                        <h:outputText value="#{rfBancoController.selected.indversion}" title="#{bundle.ViewRfBancoTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RfBancoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

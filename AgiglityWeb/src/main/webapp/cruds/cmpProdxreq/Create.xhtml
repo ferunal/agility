@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpProdxreqCreateDlg" widgetVar="CmpProdxreqCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCmpProdxreqTitle}">
+            <h:form id="CmpProdxreqCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpProdxreqController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pxrId}" for="pxrId" />
+                        <p:inputText id="pxrId" value="#{cmpProdxreqController.selected.pxrId}" title="#{bundle.CreateCmpProdxreqTitle_pxrId}" required="true" requiredMessage="#{bundle.CreateCmpProdxreqRequiredMessage_pxrId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pxrCantsol}" for="pxrCantsol" />
+                        <p:inputText id="pxrCantsol" value="#{cmpProdxreqController.selected.pxrCantsol}" title="#{bundle.CreateCmpProdxreqTitle_pxrCantsol}" />
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpProdxreqController.selected.indversion}" title="#{bundle.CreateCmpProdxreqTitle_indversion}" required="true" requiredMessage="#{bundle.CreateCmpProdxreqRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pxrRechaza}" for="pxrRechaza" />
+                        <p:selectBooleanCheckbox id="pxrRechaza" value="#{cmpProdxreqController.selected.pxrRechaza}" required="true" requiredMessage="#{bundle.EditCmpProdxreqRequiredMessage_pxrRechaza}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pxrObsrrechza}" for="pxrObsrrechza" />
+                        <p:inputText id="pxrObsrrechza" value="#{cmpProdxreqController.selected.pxrObsrrechza}" title="#{bundle.CreateCmpProdxreqTitle_pxrObsrrechza}" />
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pxrObsrsol}" for="pxrObsrsol" />
+                        <p:inputText id="pxrObsrsol" value="#{cmpProdxreqController.selected.pxrObsrsol}" title="#{bundle.CreateCmpProdxreqTitle_pxrObsrsol}" />
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_crqId}" for="crqId" />
+                        <p:selectOneMenu id="crqId" value="#{cmpProdxreqController.selected.crqId}" >
+                            <f:selectItems value="#{cmpRequiscompController.itemsAvailableSelectOne}"
+                                           var="crqIdItem"
+                                           itemValue="#{crqIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{cmpProdxreqController.selected.marId}" >
+                            <f:selectItems value="#{invMarcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_pspId}" for="pspId" />
+                        <p:selectOneMenu id="pspId" value="#{cmpProdxreqController.selected.pspId}" >
+                            <f:selectItems value="#{invPresentprodController.itemsAvailableSelectOne}"
+                                           var="pspIdItem"
+                                           itemValue="#{pspIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpProdxreqLabel_prdId}" for="prdId" />
+                        <p:selectOneMenu id="prdId" value="#{cmpProdxreqController.selected.prdId}" >
+                            <f:selectItems value="#{invProductoController.itemsAvailableSelectOne}"
+                                           var="prdIdItem"
+                                           itemValue="#{prdIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpProdxreqController.create}" value="#{bundle.Save}" update="display,:CmpProdxreqListForm:datalist,:growl" oncomplete="handleSubmit(args,'CmpProdxreqCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpProdxreqCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

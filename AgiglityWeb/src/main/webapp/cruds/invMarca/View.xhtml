@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvMarcaViewDlg" widgetVar="InvMarcaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvMarcaTitle}">
+            <h:form id="InvMarcaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invMarcaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvMarcaLabel_marId}"/>
+                        <h:outputText value="#{invMarcaController.selected.marId}" title="#{bundle.ViewInvMarcaTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcaLabel_marNombre}"/>
+                        <h:outputText value="#{invMarcaController.selected.marNombre}" title="#{bundle.ViewInvMarcaTitle_marNombre}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcaLabel_marDesc}"/>
+                        <h:outputText value="#{invMarcaController.selected.marDesc}" title="#{bundle.ViewInvMarcaTitle_marDesc}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcaLabel_marEst}"/>
+                        <p:selectBooleanCheckbox value="#{invMarcaController.selected.marEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvMarcaLabel_indversion}"/>
+                        <h:outputText value="#{invMarcaController.selected.indversion}" title="#{bundle.ViewInvMarcaTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvMarcaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

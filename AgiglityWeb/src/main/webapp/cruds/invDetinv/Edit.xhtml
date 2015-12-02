@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvDetinvEditDlg" widgetVar="InvDetinvEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInvDetinvTitle}">
+            <h:form id="InvDetinvEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invDetinvController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divId}" for="divId" />
+                        <p:inputText id="divId" value="#{invDetinvController.selected.divId}" title="#{bundle.EditInvDetinvTitle_divId}" required="true" requiredMessage="#{bundle.EditInvDetinvRequiredMessage_divId}"/>
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divNumserie}" for="divNumserie" />
+                        <p:inputText id="divNumserie" value="#{invDetinvController.selected.divNumserie}" title="#{bundle.EditInvDetinvTitle_divNumserie}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divModelo}" for="divModelo" />
+                        <p:inputText id="divModelo" value="#{invDetinvController.selected.divModelo}" title="#{bundle.EditInvDetinvTitle_divModelo}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divDesc}" for="divDesc" />
+                        <p:inputText id="divDesc" value="#{invDetinvController.selected.divDesc}" title="#{bundle.EditInvDetinvTitle_divDesc}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invDetinvController.selected.indversion}" title="#{bundle.EditInvDetinvTitle_indversion}" required="true" requiredMessage="#{bundle.EditInvDetinvRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divNumserialfabricante}" for="divNumserialfabricante" />
+                        <p:inputText id="divNumserialfabricante" value="#{invDetinvController.selected.divNumserialfabricante}" title="#{bundle.EditInvDetinvTitle_divNumserialfabricante}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divDescripcion}" for="divDescripcion" />
+                        <p:inputText id="divDescripcion" value="#{invDetinvController.selected.divDescripcion}" title="#{bundle.EditInvDetinvTitle_divDescripcion}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_divLibre}" for="divLibre" />
+                        <p:selectBooleanCheckbox id="divLibre" value="#{invDetinvController.selected.divLibre}" />
+                        <p:outputLabel value="#{bundle.EditInvDetinvLabel_invId}" for="invId" />
+                        <p:selectOneMenu id="invId" value="#{invDetinvController.selected.invId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invInventController.itemsAvailableSelectOne}"
+                                           var="invIdItem"
+                                           itemValue="#{invIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invDetinvController.update}" value="#{bundle.Save}" update="display,:InvDetinvListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InvDetinvEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvDetinvEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvBancoxprovViewDlg" widgetVar="InvBancoxprovViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvBancoxprovTitle}">
+            <h:form id="InvBancoxprovViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invBancoxprovController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_bxpId}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.bxpId}" title="#{bundle.ViewInvBancoxprovTitle_bxpId}"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_bxpNumcuenta}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.bxpNumcuenta}" title="#{bundle.ViewInvBancoxprovTitle_bxpNumcuenta}"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_bxpEstado}"/>
+                        <p:selectBooleanCheckbox value="#{invBancoxprovController.selected.bxpEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_indversion}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.indversion}" title="#{bundle.ViewInvBancoxprovTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_bxeAplica}"/>
+                        <p:selectBooleanCheckbox value="#{invBancoxprovController.selected.bxeAplica}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_prvId}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.prvId}" title="#{bundle.ViewInvBancoxprovTitle_prvId}"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_bncId}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.bncId}" title="#{bundle.ViewInvBancoxprovTitle_bncId}"/>
+                        <h:outputText value="#{bundle.ViewInvBancoxprovLabel_tctId}"/>
+                        <h:outputText value="#{invBancoxprovController.selected.tctId}" title="#{bundle.ViewInvBancoxprovTitle_tctId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvBancoxprovViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

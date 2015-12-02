@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfBarrioCreateDlg" widgetVar="RfBarrioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRfBarrioTitle}">
+            <h:form id="RfBarrioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfBarrioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRfBarrioLabel_barId}" for="barId" />
+                        <p:inputText id="barId" value="#{rfBarrioController.selected.barId}" title="#{bundle.CreateRfBarrioTitle_barId}" required="true" requiredMessage="#{bundle.CreateRfBarrioRequiredMessage_barId}"/>
+                        <p:outputLabel value="#{bundle.CreateRfBarrioLabel_barDesc}" for="barDesc" />
+                        <p:inputText id="barDesc" value="#{rfBarrioController.selected.barDesc}" title="#{bundle.CreateRfBarrioTitle_barDesc}" />
+                        <p:outputLabel value="#{bundle.CreateRfBarrioLabel_barCod}" for="barCod" />
+                        <p:inputText id="barCod" value="#{rfBarrioController.selected.barCod}" title="#{bundle.CreateRfBarrioTitle_barCod}" required="true" requiredMessage="#{bundle.CreateRfBarrioRequiredMessage_barCod}"/>
+                        <p:outputLabel value="#{bundle.CreateRfBarrioLabel_locId}" for="locId" />
+                        <p:selectOneMenu id="locId" value="#{rfBarrioController.selected.locId}" required="true" requiredMessage="#{bundle.EditRfBarrioRequiredMessage_locId}">
+                            <f:selectItems value="#{rfLocalidadController.itemsAvailableSelectOne}"
+                                           var="locIdItem"
+                                           itemValue="#{locIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfBarrioController.create}" value="#{bundle.Save}" update="display,:RfBarrioListForm:datalist,:growl" oncomplete="handleSubmit(args,'RfBarrioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfBarrioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

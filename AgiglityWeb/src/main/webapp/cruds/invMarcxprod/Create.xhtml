@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvMarcxprodCreateDlg" widgetVar="InvMarcxprodCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvMarcxprodTitle}">
+            <h:form id="InvMarcxprodCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invMarcxprodController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvMarcxprodLabel_mxpId}" for="mxpId" />
+                        <p:inputText id="mxpId" value="#{invMarcxprodController.selected.mxpId}" title="#{bundle.CreateInvMarcxprodTitle_mxpId}" required="true" requiredMessage="#{bundle.CreateInvMarcxprodRequiredMessage_mxpId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvMarcxprodLabel_mxpEst}" for="mxpEst" />
+                        <p:selectBooleanCheckbox id="mxpEst" value="#{invMarcxprodController.selected.mxpEst}" required="true" requiredMessage="#{bundle.EditInvMarcxprodRequiredMessage_mxpEst}"/>
+                        <p:outputLabel value="#{bundle.CreateInvMarcxprodLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invMarcxprodController.selected.indversion}" title="#{bundle.CreateInvMarcxprodTitle_indversion}" required="true" requiredMessage="#{bundle.CreateInvMarcxprodRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateInvMarcxprodLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{invMarcxprodController.selected.marId}" >
+                            <f:selectItems value="#{invMarcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvMarcxprodLabel_prdId}" for="prdId" />
+                        <p:selectOneMenu id="prdId" value="#{invMarcxprodController.selected.prdId}" >
+                            <f:selectItems value="#{invProductoController.itemsAvailableSelectOne}"
+                                           var="prdIdItem"
+                                           itemValue="#{prdIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invMarcxprodController.create}" value="#{bundle.Save}" update="display,:InvMarcxprodListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvMarcxprodCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvMarcxprodCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

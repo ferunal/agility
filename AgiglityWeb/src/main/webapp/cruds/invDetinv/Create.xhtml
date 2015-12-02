@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvDetinvCreateDlg" widgetVar="InvDetinvCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvDetinvTitle}">
+            <h:form id="InvDetinvCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invDetinvController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divId}" for="divId" />
+                        <p:inputText id="divId" value="#{invDetinvController.selected.divId}" title="#{bundle.CreateInvDetinvTitle_divId}" required="true" requiredMessage="#{bundle.CreateInvDetinvRequiredMessage_divId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divNumserie}" for="divNumserie" />
+                        <p:inputText id="divNumserie" value="#{invDetinvController.selected.divNumserie}" title="#{bundle.CreateInvDetinvTitle_divNumserie}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divModelo}" for="divModelo" />
+                        <p:inputText id="divModelo" value="#{invDetinvController.selected.divModelo}" title="#{bundle.CreateInvDetinvTitle_divModelo}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divDesc}" for="divDesc" />
+                        <p:inputText id="divDesc" value="#{invDetinvController.selected.divDesc}" title="#{bundle.CreateInvDetinvTitle_divDesc}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invDetinvController.selected.indversion}" title="#{bundle.CreateInvDetinvTitle_indversion}" required="true" requiredMessage="#{bundle.CreateInvDetinvRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divNumserialfabricante}" for="divNumserialfabricante" />
+                        <p:inputText id="divNumserialfabricante" value="#{invDetinvController.selected.divNumserialfabricante}" title="#{bundle.CreateInvDetinvTitle_divNumserialfabricante}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divDescripcion}" for="divDescripcion" />
+                        <p:inputText id="divDescripcion" value="#{invDetinvController.selected.divDescripcion}" title="#{bundle.CreateInvDetinvTitle_divDescripcion}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_divLibre}" for="divLibre" />
+                        <p:selectBooleanCheckbox id="divLibre" value="#{invDetinvController.selected.divLibre}" />
+                        <p:outputLabel value="#{bundle.CreateInvDetinvLabel_invId}" for="invId" />
+                        <p:selectOneMenu id="invId" value="#{invDetinvController.selected.invId}" >
+                            <f:selectItems value="#{invInventController.itemsAvailableSelectOne}"
+                                           var="invIdItem"
+                                           itemValue="#{invIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invDetinvController.create}" value="#{bundle.Save}" update="display,:InvDetinvListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvDetinvCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvDetinvCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

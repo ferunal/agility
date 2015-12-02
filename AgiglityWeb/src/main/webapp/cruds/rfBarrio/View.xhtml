@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfBarrioViewDlg" widgetVar="RfBarrioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRfBarrioTitle}">
+            <h:form id="RfBarrioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfBarrioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRfBarrioLabel_barId}"/>
+                        <h:outputText value="#{rfBarrioController.selected.barId}" title="#{bundle.ViewRfBarrioTitle_barId}"/>
+                        <h:outputText value="#{bundle.ViewRfBarrioLabel_barDesc}"/>
+                        <h:outputText value="#{rfBarrioController.selected.barDesc}" title="#{bundle.ViewRfBarrioTitle_barDesc}"/>
+                        <h:outputText value="#{bundle.ViewRfBarrioLabel_barCod}"/>
+                        <h:outputText value="#{rfBarrioController.selected.barCod}" title="#{bundle.ViewRfBarrioTitle_barCod}"/>
+                        <h:outputText value="#{bundle.ViewRfBarrioLabel_locId}"/>
+                        <h:outputText value="#{rfBarrioController.selected.locId}" title="#{bundle.ViewRfBarrioTitle_locId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RfBarrioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

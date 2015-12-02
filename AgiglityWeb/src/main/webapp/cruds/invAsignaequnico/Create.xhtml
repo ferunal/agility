@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvAsignaequnicoCreateDlg" widgetVar="InvAsignaequnicoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvAsignaequnicoTitle}">
+            <h:form id="InvAsignaequnicoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invAsignaequnicoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_ixcId}" for="ixcId" />
+                        <p:inputText id="ixcId" value="#{invAsignaequnicoController.selected.ixcId}" title="#{bundle.CreateInvAsignaequnicoTitle_ixcId}" required="true" requiredMessage="#{bundle.CreateInvAsignaequnicoRequiredMessage_ixcId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_ixcFechaproceso}" for="ixcFechaproceso" />
+                        <p:calendar id="ixcFechaproceso" pattern="MM/dd/yyyy HH:mm:ss" value="#{invAsignaequnicoController.selected.ixcFechaproceso}" title="#{bundle.EditInvAsignaequnicoTitle_ixcFechaproceso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_ixcEstado}" for="ixcEstado" />
+                        <p:selectBooleanCheckbox id="ixcEstado" value="#{invAsignaequnicoController.selected.ixcEstado}" />
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invAsignaequnicoController.selected.indversion}" title="#{bundle.CreateInvAsignaequnicoTitle_indversion}" required="true" requiredMessage="#{bundle.CreateInvAsignaequnicoRequiredMessage_indversion}"/>
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_cxcIdasignado}" for="cxcIdasignado" />
+                        <p:inputText id="cxcIdasignado" value="#{invAsignaequnicoController.selected.cxcIdasignado}" title="#{bundle.CreateInvAsignaequnicoTitle_cxcIdasignado}" />
+                        <p:outputLabel value="#{bundle.CreateInvAsignaequnicoLabel_itrId}" for="itrId" />
+                        <p:selectOneMenu id="itrId" value="#{invAsignaequnicoController.selected.itrId}" >
+                            <f:selectItems value="#{invTransacController.itemsAvailableSelectOne}"
+                                           var="itrIdItem"
+                                           itemValue="#{itrIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invAsignaequnicoController.create}" value="#{bundle.Save}" update="display,:InvAsignaequnicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvAsignaequnicoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvAsignaequnicoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvCatprodEditDlg" widgetVar="InvCatprodEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditInvCatprodTitle}">
+            <h:form id="InvCatprodEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invCatprodController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditInvCatprodLabel_cpdId}" for="cpdId" />
+                        <p:inputText id="cpdId" value="#{invCatprodController.selected.cpdId}" title="#{bundle.EditInvCatprodTitle_cpdId}" required="true" requiredMessage="#{bundle.EditInvCatprodRequiredMessage_cpdId}"/>
+                        <p:outputLabel value="#{bundle.EditInvCatprodLabel_cpdNombre}" for="cpdNombre" />
+                        <p:inputText id="cpdNombre" value="#{invCatprodController.selected.cpdNombre}" title="#{bundle.EditInvCatprodTitle_cpdNombre}" />
+                        <p:outputLabel value="#{bundle.EditInvCatprodLabel_cpdDesc}" for="cpdDesc" />
+                        <p:inputText id="cpdDesc" value="#{invCatprodController.selected.cpdDesc}" title="#{bundle.EditInvCatprodTitle_cpdDesc}" />
+                        <p:outputLabel value="#{bundle.EditInvCatprodLabel_cpdEst}" for="cpdEst" />
+                        <p:selectBooleanCheckbox id="cpdEst" value="#{invCatprodController.selected.cpdEst}" required="true" requiredMessage="#{bundle.EditInvCatprodRequiredMessage_cpdEst}"/>
+                        <p:outputLabel value="#{bundle.EditInvCatprodLabel_cpdAplica}" for="cpdAplica" />
+                        <p:selectBooleanCheckbox id="cpdAplica" value="#{invCatprodController.selected.cpdAplica}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invCatprodController.update}" value="#{bundle.Save}" update="display,:InvCatprodListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InvCatprodEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvCatprodEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

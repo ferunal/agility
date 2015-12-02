@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRfTipocuentaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="RfTipocuentaListForm">
+                <p:panel header="#{bundle.ListRfTipocuentaTitle}">
+                    <p:dataTable id="datalist" value="#{rfTipocuentaController.items}" var="item"
+                                 selectionMode="single" selection="#{rfTipocuentaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.tctId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRfTipocuentaTitle_tctId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tctId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRfTipocuentaTitle_tctNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tctNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRfTipocuentaTitle_tctDescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tctDescripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRfTipocuentaTitle_tctEstado}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.tctEstado}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRfTipocuentaTitle_indversion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.indversion}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{rfTipocuentaController.prepareCreate}" update=":RfTipocuentaCreateForm" oncomplete="PF('RfTipocuentaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":RfTipocuentaViewForm" oncomplete="PF('RfTipocuentaViewDialog').show()" disabled="#{empty rfTipocuentaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":RfTipocuentaEditForm" oncomplete="PF('RfTipocuentaEditDialog').show()" disabled="#{empty rfTipocuentaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{rfTipocuentaController.destroy}" update=":growl,datalist" disabled="#{empty rfTipocuentaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

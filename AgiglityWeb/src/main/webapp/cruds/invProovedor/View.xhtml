@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvProovedorViewDlg" widgetVar="InvProovedorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvProovedorTitle}">
+            <h:form id="InvProovedorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invProovedorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvId}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvId}" title="#{bundle.ViewInvProovedorTitle_prvId}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvRazonsoc}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvRazonsoc}" title="#{bundle.ViewInvProovedorTitle_prvRazonsoc}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvDesc}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvDesc}" title="#{bundle.ViewInvProovedorTitle_prvDesc}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvTel1}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvTel1}" title="#{bundle.ViewInvProovedorTitle_prvTel1}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvTel2}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvTel2}" title="#{bundle.ViewInvProovedorTitle_prvTel2}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvEmail}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvEmail}" title="#{bundle.ViewInvProovedorTitle_prvEmail}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvDireccion}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvDireccion}" title="#{bundle.ViewInvProovedorTitle_prvDireccion}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvDigver}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvDigver}" title="#{bundle.ViewInvProovedorTitle_prvDigver}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_fpgId}"/>
+                        <h:outputText value="#{invProovedorController.selected.fpgId}" title="#{bundle.ViewInvProovedorTitle_fpgId}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvNit}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvNit}" title="#{bundle.ViewInvProovedorTitle_prvNit}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvContacto}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvContacto}" title="#{bundle.ViewInvProovedorTitle_prvContacto}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvTelcontacto}"/>
+                        <h:outputText value="#{invProovedorController.selected.prvTelcontacto}" title="#{bundle.ViewInvProovedorTitle_prvTelcontacto}"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_prvEstado}"/>
+                        <p:selectBooleanCheckbox value="#{invProovedorController.selected.prvEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvProovedorLabel_indversion}"/>
+                        <h:outputText value="#{invProovedorController.selected.indversion}" title="#{bundle.ViewInvProovedorTitle_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvProovedorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

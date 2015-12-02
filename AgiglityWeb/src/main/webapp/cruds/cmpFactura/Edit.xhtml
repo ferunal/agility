@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpFacturaEditDlg" widgetVar="CmpFacturaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCmpFacturaTitle}">
+            <h:form id="CmpFacturaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpFacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factId}" for="factId" />
+                        <p:inputText id="factId" value="#{cmpFacturaController.selected.factId}" title="#{bundle.EditCmpFacturaTitle_factId}" required="true" requiredMessage="#{bundle.EditCmpFacturaRequiredMessage_factId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factNumfact}" for="factNumfact" />
+                        <p:inputText id="factNumfact" value="#{cmpFacturaController.selected.factNumfact}" title="#{bundle.EditCmpFacturaTitle_factNumfact}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factPrefact}" for="factPrefact" />
+                        <p:selectBooleanCheckbox id="factPrefact" value="#{cmpFacturaController.selected.factPrefact}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factValorbruto}" for="factValorbruto" />
+                        <p:inputText id="factValorbruto" value="#{cmpFacturaController.selected.factValorbruto}" title="#{bundle.EditCmpFacturaTitle_factValorbruto}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factValorneto}" for="factValorneto" />
+                        <p:inputText id="factValorneto" value="#{cmpFacturaController.selected.factValorneto}" title="#{bundle.EditCmpFacturaTitle_factValorneto}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factEst}" for="factEst" />
+                        <p:selectBooleanCheckbox id="factEst" value="#{cmpFacturaController.selected.factEst}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpFacturaController.selected.strId}" title="#{bundle.EditCmpFacturaTitle_strId}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_cxcId}" for="cxcId" />
+                        <p:inputText id="cxcId" value="#{cmpFacturaController.selected.cxcId}" title="#{bundle.EditCmpFacturaTitle_cxcId}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factFechaproceso}" for="factFechaproceso" />
+                        <p:calendar id="factFechaproceso" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpFacturaController.selected.factFechaproceso}" title="#{bundle.EditCmpFacturaTitle_factFechaproceso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpFacturaController.selected.indversion}" title="#{bundle.EditCmpFacturaTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factPrevalorbruto}" for="factPrevalorbruto" />
+                        <p:inputText id="factPrevalorbruto" value="#{cmpFacturaController.selected.factPrevalorbruto}" title="#{bundle.EditCmpFacturaTitle_factPrevalorbruto}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factProcesadorecibido}" for="factProcesadorecibido" />
+                        <p:selectBooleanCheckbox id="factProcesadorecibido" value="#{cmpFacturaController.selected.factProcesadorecibido}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factProcesadocargainv}" for="factProcesadocargainv" />
+                        <p:selectBooleanCheckbox id="factProcesadocargainv" value="#{cmpFacturaController.selected.factProcesadocargainv}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factEnvpagocuenta}" for="factEnvpagocuenta" />
+                        <p:selectBooleanCheckbox id="factEnvpagocuenta" value="#{cmpFacturaController.selected.factEnvpagocuenta}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factAnticipo}" for="factAnticipo" />
+                        <p:inputText id="factAnticipo" value="#{cmpFacturaController.selected.factAnticipo}" title="#{bundle.EditCmpFacturaTitle_factAnticipo}" />
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_factFechamaxentrega}" for="factFechamaxentrega" />
+                        <p:calendar id="factFechamaxentrega" pattern="MM/dd/yyyy" value="#{cmpFacturaController.selected.factFechamaxentrega}" title="#{bundle.EditCmpFacturaTitle_factFechamaxentrega}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpFacturaLabel_prvId}" for="prvId" />
+                        <p:selectOneMenu id="prvId" value="#{cmpFacturaController.selected.prvId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{invProovedorController.itemsAvailableSelectOne}"
+                                           var="prvIdItem"
+                                           itemValue="#{prvIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpFacturaController.update}" value="#{bundle.Save}" update="display,:CmpFacturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CmpFacturaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpFacturaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpEntregapedidoEditDlg" widgetVar="CmpEntregapedidoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCmpEntregapedidoTitle}">
+            <h:form id="CmpEntregapedidoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpEntregapedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpId}" for="etpId" />
+                        <p:inputText id="etpId" value="#{cmpEntregapedidoController.selected.etpId}" title="#{bundle.EditCmpEntregapedidoTitle_etpId}" required="true" requiredMessage="#{bundle.EditCmpEntregapedidoRequiredMessage_etpId}"/>
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpFechaentrega}" for="etpFechaentrega" />
+                        <p:calendar id="etpFechaentrega" pattern="MM/dd/yyyy" value="#{cmpEntregapedidoController.selected.etpFechaentrega}" title="#{bundle.EditCmpEntregapedidoTitle_etpFechaentrega}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpEstado}" for="etpEstado" />
+                        <p:selectBooleanCheckbox id="etpEstado" value="#{cmpEntregapedidoController.selected.etpEstado}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpFechaproceso}" for="etpFechaproceso" />
+                        <p:calendar id="etpFechaproceso" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpEntregapedidoController.selected.etpFechaproceso}" title="#{bundle.EditCmpEntregapedidoTitle_etpFechaproceso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{cmpEntregapedidoController.selected.indversion}" title="#{bundle.EditCmpEntregapedidoTitle_indversion}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpEntregado}" for="etpEntregado" />
+                        <p:selectBooleanCheckbox id="etpEntregado" value="#{cmpEntregapedidoController.selected.etpEntregado}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpObsr}" for="etpObsr" />
+                        <p:inputText id="etpObsr" value="#{cmpEntregapedidoController.selected.etpObsr}" title="#{bundle.EditCmpEntregapedidoTitle_etpObsr}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpRecibido}" for="etpRecibido" />
+                        <p:selectBooleanCheckbox id="etpRecibido" value="#{cmpEntregapedidoController.selected.etpRecibido}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpFecprocrecepcion}" for="etpFecprocrecepcion" />
+                        <p:calendar id="etpFecprocrecepcion" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpEntregapedidoController.selected.etpFecprocrecepcion}" title="#{bundle.EditCmpEntregapedidoTitle_etpFecprocrecepcion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_etpCantrecibida}" for="etpCantrecibida" />
+                        <p:inputText id="etpCantrecibida" value="#{cmpEntregapedidoController.selected.etpCantrecibida}" title="#{bundle.EditCmpEntregapedidoTitle_etpCantrecibida}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpEntregapedidoController.selected.strId}" title="#{bundle.EditCmpEntregapedidoTitle_strId}" />
+                        <p:outputLabel value="#{bundle.EditCmpEntregapedidoLabel_drmId}" for="drmId" />
+                        <p:selectOneMenu id="drmId" value="#{cmpEntregapedidoController.selected.drmId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cmpDetremisionController.itemsAvailableSelectOne}"
+                                           var="drmIdItem"
+                                           itemValue="#{drmIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpEntregapedidoController.update}" value="#{bundle.Save}" update="display,:CmpEntregapedidoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CmpEntregapedidoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpEntregapedidoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

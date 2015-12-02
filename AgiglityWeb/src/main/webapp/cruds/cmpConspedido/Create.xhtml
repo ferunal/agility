@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpConspedidoCreateDlg" widgetVar="CmpConspedidoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCmpConspedidoTitle}">
+            <h:form id="CmpConspedidoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpConspedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_ccpId}" for="ccpId" />
+                        <p:inputText id="ccpId" value="#{cmpConspedidoController.selected.ccpId}" title="#{bundle.CreateCmpConspedidoTitle_ccpId}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_ccpId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_strId}" for="strId" />
+                        <p:inputText id="strId" value="#{cmpConspedidoController.selected.strId}" title="#{bundle.CreateCmpConspedidoTitle_strId}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_strId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_ccpCantaprob}" for="ccpCantaprob" />
+                        <p:inputText id="ccpCantaprob" value="#{cmpConspedidoController.selected.ccpCantaprob}" title="#{bundle.CreateCmpConspedidoTitle_ccpCantaprob}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_ccpCantaprob}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_ccpCantinv}" for="ccpCantinv" />
+                        <p:inputText id="ccpCantinv" value="#{cmpConspedidoController.selected.ccpCantinv}" title="#{bundle.CreateCmpConspedidoTitle_ccpCantinv}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_ccpCantinv}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_ccpCantcomprar}" for="ccpCantcomprar" />
+                        <p:inputText id="ccpCantcomprar" value="#{cmpConspedidoController.selected.ccpCantcomprar}" title="#{bundle.CreateCmpConspedidoTitle_ccpCantcomprar}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_ccpCantcomprar}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_ccpFechaproceso}" for="ccpFechaproceso" />
+                        <p:calendar id="ccpFechaproceso" pattern="MM/dd/yyyy HH:mm:ss" value="#{cmpConspedidoController.selected.ccpFechaproceso}" title="#{bundle.EditCmpConspedidoTitle_ccpFechaproceso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_cpeId}" for="cpeId" />
+                        <p:inputText id="cpeId" value="#{cmpConspedidoController.selected.cpeId}" title="#{bundle.CreateCmpConspedidoTitle_cpeId}" required="true" requiredMessage="#{bundle.CreateCmpConspedidoRequiredMessage_cpeId}"/>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{cmpConspedidoController.selected.marId}" required="true" requiredMessage="#{bundle.EditCmpConspedidoRequiredMessage_marId}">
+                            <f:selectItems value="#{invMarcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_pspId}" for="pspId" />
+                        <p:selectOneMenu id="pspId" value="#{cmpConspedidoController.selected.pspId}" required="true" requiredMessage="#{bundle.EditCmpConspedidoRequiredMessage_pspId}">
+                            <f:selectItems value="#{invPresentprodController.itemsAvailableSelectOne}"
+                                           var="pspIdItem"
+                                           itemValue="#{pspIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCmpConspedidoLabel_prdId}" for="prdId" />
+                        <p:selectOneMenu id="prdId" value="#{cmpConspedidoController.selected.prdId}" required="true" requiredMessage="#{bundle.EditCmpConspedidoRequiredMessage_prdId}">
+                            <f:selectItems value="#{invProductoController.itemsAvailableSelectOne}"
+                                           var="prdIdItem"
+                                           itemValue="#{prdIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cmpConspedidoController.create}" value="#{bundle.Save}" update="display,:CmpConspedidoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CmpConspedidoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CmpConspedidoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

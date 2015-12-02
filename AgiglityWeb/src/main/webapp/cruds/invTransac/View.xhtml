@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvTransacViewDlg" widgetVar="InvTransacViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvTransacTitle}">
+            <h:form id="InvTransacViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invTransacController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrId}"/>
+                        <h:outputText value="#{invTransacController.selected.itrId}" title="#{bundle.ViewInvTransacTitle_itrId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrCant}"/>
+                        <h:outputText value="#{invTransacController.selected.itrCant}" title="#{bundle.ViewInvTransacTitle_itrCant}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrFecpro}"/>
+                        <h:outputText value="#{invTransacController.selected.itrFecpro}" title="#{bundle.ViewInvTransacTitle_itrFecpro}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_cxcId}"/>
+                        <h:outputText value="#{invTransacController.selected.cxcId}" title="#{bundle.ViewInvTransacTitle_cxcId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrObsr}"/>
+                        <h:outputText value="#{invTransacController.selected.itrObsr}" title="#{bundle.ViewInvTransacTitle_itrObsr}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrAnultr}"/>
+                        <p:selectBooleanCheckbox value="#{invTransacController.selected.itrAnultr}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrIdtranul}"/>
+                        <h:outputText value="#{invTransacController.selected.itrIdtranul}" title="#{bundle.ViewInvTransacTitle_itrIdtranul}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrEstado}"/>
+                        <p:selectBooleanCheckbox value="#{invTransacController.selected.itrEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_indversion}"/>
+                        <h:outputText value="#{invTransacController.selected.indversion}" title="#{bundle.ViewInvTransacTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_itrValor}"/>
+                        <h:outputText value="#{invTransacController.selected.itrValor}" title="#{bundle.ViewInvTransacTitle_itrValor}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_strId}"/>
+                        <h:outputText value="#{invTransacController.selected.strId}" title="#{bundle.ViewInvTransacTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_factId}"/>
+                        <h:outputText value="#{invTransacController.selected.factId}" title="#{bundle.ViewInvTransacTitle_factId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_rmiId}"/>
+                        <h:outputText value="#{invTransacController.selected.rmiId}" title="#{bundle.ViewInvTransacTitle_rmiId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_invId}"/>
+                        <h:outputText value="#{invTransacController.selected.invId}" title="#{bundle.ViewInvTransacTitle_invId}"/>
+                        <h:outputText value="#{bundle.ViewInvTransacLabel_ttrId}"/>
+                        <h:outputText value="#{invTransacController.selected.ttrId}" title="#{bundle.ViewInvTransacTitle_ttrId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvTransacViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

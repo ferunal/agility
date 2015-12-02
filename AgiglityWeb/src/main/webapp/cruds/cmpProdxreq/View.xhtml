@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpProdxreqViewDlg" widgetVar="CmpProdxreqViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpProdxreqTitle}">
+            <h:form id="CmpProdxreqViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpProdxreqController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pxrId}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.pxrId}" title="#{bundle.ViewCmpProdxreqTitle_pxrId}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pxrCantsol}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.pxrCantsol}" title="#{bundle.ViewCmpProdxreqTitle_pxrCantsol}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_indversion}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.indversion}" title="#{bundle.ViewCmpProdxreqTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pxrRechaza}"/>
+                        <p:selectBooleanCheckbox value="#{cmpProdxreqController.selected.pxrRechaza}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pxrObsrrechza}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.pxrObsrrechza}" title="#{bundle.ViewCmpProdxreqTitle_pxrObsrrechza}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pxrObsrsol}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.pxrObsrsol}" title="#{bundle.ViewCmpProdxreqTitle_pxrObsrsol}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_crqId}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.crqId}" title="#{bundle.ViewCmpProdxreqTitle_crqId}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_marId}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.marId}" title="#{bundle.ViewCmpProdxreqTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_pspId}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.pspId}" title="#{bundle.ViewCmpProdxreqTitle_pspId}"/>
+                        <h:outputText value="#{bundle.ViewCmpProdxreqLabel_prdId}"/>
+                        <h:outputText value="#{cmpProdxreqController.selected.prdId}" title="#{bundle.ViewCmpProdxreqTitle_prdId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpProdxreqViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

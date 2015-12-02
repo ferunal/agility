@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvProovedorCreateDlg" widgetVar="InvProovedorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvProovedorTitle}">
+            <h:form id="InvProovedorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invProovedorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvId}" for="prvId" />
+                        <p:inputText id="prvId" value="#{invProovedorController.selected.prvId}" title="#{bundle.CreateInvProovedorTitle_prvId}" required="true" requiredMessage="#{bundle.CreateInvProovedorRequiredMessage_prvId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvRazonsoc}" for="prvRazonsoc" />
+                        <p:inputText id="prvRazonsoc" value="#{invProovedorController.selected.prvRazonsoc}" title="#{bundle.CreateInvProovedorTitle_prvRazonsoc}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvDesc}" for="prvDesc" />
+                        <p:inputText id="prvDesc" value="#{invProovedorController.selected.prvDesc}" title="#{bundle.CreateInvProovedorTitle_prvDesc}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvTel1}" for="prvTel1" />
+                        <p:inputText id="prvTel1" value="#{invProovedorController.selected.prvTel1}" title="#{bundle.CreateInvProovedorTitle_prvTel1}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvTel2}" for="prvTel2" />
+                        <p:inputText id="prvTel2" value="#{invProovedorController.selected.prvTel2}" title="#{bundle.CreateInvProovedorTitle_prvTel2}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvEmail}" for="prvEmail" />
+                        <p:inputText id="prvEmail" value="#{invProovedorController.selected.prvEmail}" title="#{bundle.CreateInvProovedorTitle_prvEmail}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvDireccion}" for="prvDireccion" />
+                        <p:inputText id="prvDireccion" value="#{invProovedorController.selected.prvDireccion}" title="#{bundle.CreateInvProovedorTitle_prvDireccion}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvDigver}" for="prvDigver" />
+                        <p:inputText id="prvDigver" value="#{invProovedorController.selected.prvDigver}" title="#{bundle.CreateInvProovedorTitle_prvDigver}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_fpgId}" for="fpgId" />
+                        <p:inputText id="fpgId" value="#{invProovedorController.selected.fpgId}" title="#{bundle.CreateInvProovedorTitle_fpgId}" required="true" requiredMessage="#{bundle.CreateInvProovedorRequiredMessage_fpgId}"/>
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvNit}" for="prvNit" />
+                        <p:inputText id="prvNit" value="#{invProovedorController.selected.prvNit}" title="#{bundle.CreateInvProovedorTitle_prvNit}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvContacto}" for="prvContacto" />
+                        <p:inputText id="prvContacto" value="#{invProovedorController.selected.prvContacto}" title="#{bundle.CreateInvProovedorTitle_prvContacto}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvTelcontacto}" for="prvTelcontacto" />
+                        <p:inputText id="prvTelcontacto" value="#{invProovedorController.selected.prvTelcontacto}" title="#{bundle.CreateInvProovedorTitle_prvTelcontacto}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_prvEstado}" for="prvEstado" />
+                        <p:selectBooleanCheckbox id="prvEstado" value="#{invProovedorController.selected.prvEstado}" />
+                        <p:outputLabel value="#{bundle.CreateInvProovedorLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{invProovedorController.selected.indversion}" title="#{bundle.CreateInvProovedorTitle_indversion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invProovedorController.create}" value="#{bundle.Save}" update="display,:InvProovedorListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvProovedorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvProovedorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

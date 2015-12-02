@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpEntregapedidoViewDlg" widgetVar="CmpEntregapedidoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCmpEntregapedidoTitle}">
+            <h:form id="CmpEntregapedidoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cmpEntregapedidoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpId}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpId}" title="#{bundle.ViewCmpEntregapedidoTitle_etpId}"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpFechaentrega}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpFechaentrega}" title="#{bundle.ViewCmpEntregapedidoTitle_etpFechaentrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpEstado}"/>
+                        <p:selectBooleanCheckbox value="#{cmpEntregapedidoController.selected.etpEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpFechaproceso}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpFechaproceso}" title="#{bundle.ViewCmpEntregapedidoTitle_etpFechaproceso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_indversion}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.indversion}" title="#{bundle.ViewCmpEntregapedidoTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpEntregado}"/>
+                        <p:selectBooleanCheckbox value="#{cmpEntregapedidoController.selected.etpEntregado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpObsr}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpObsr}" title="#{bundle.ViewCmpEntregapedidoTitle_etpObsr}"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpRecibido}"/>
+                        <p:selectBooleanCheckbox value="#{cmpEntregapedidoController.selected.etpRecibido}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpFecprocrecepcion}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpFecprocrecepcion}" title="#{bundle.ViewCmpEntregapedidoTitle_etpFecprocrecepcion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_etpCantrecibida}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.etpCantrecibida}" title="#{bundle.ViewCmpEntregapedidoTitle_etpCantrecibida}"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_strId}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.strId}" title="#{bundle.ViewCmpEntregapedidoTitle_strId}"/>
+                        <h:outputText value="#{bundle.ViewCmpEntregapedidoLabel_drmId}"/>
+                        <h:outputText value="#{cmpEntregapedidoController.selected.drmId}" title="#{bundle.ViewCmpEntregapedidoTitle_drmId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CmpEntregapedidoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

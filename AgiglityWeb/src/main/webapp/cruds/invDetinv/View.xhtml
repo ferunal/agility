@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvDetinvViewDlg" widgetVar="InvDetinvViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvDetinvTitle}">
+            <h:form id="InvDetinvViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invDetinvController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divId}"/>
+                        <h:outputText value="#{invDetinvController.selected.divId}" title="#{bundle.ViewInvDetinvTitle_divId}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divNumserie}"/>
+                        <h:outputText value="#{invDetinvController.selected.divNumserie}" title="#{bundle.ViewInvDetinvTitle_divNumserie}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divModelo}"/>
+                        <h:outputText value="#{invDetinvController.selected.divModelo}" title="#{bundle.ViewInvDetinvTitle_divModelo}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divDesc}"/>
+                        <h:outputText value="#{invDetinvController.selected.divDesc}" title="#{bundle.ViewInvDetinvTitle_divDesc}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_indversion}"/>
+                        <h:outputText value="#{invDetinvController.selected.indversion}" title="#{bundle.ViewInvDetinvTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divNumserialfabricante}"/>
+                        <h:outputText value="#{invDetinvController.selected.divNumserialfabricante}" title="#{bundle.ViewInvDetinvTitle_divNumserialfabricante}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divDescripcion}"/>
+                        <h:outputText value="#{invDetinvController.selected.divDescripcion}" title="#{bundle.ViewInvDetinvTitle_divDescripcion}"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_divLibre}"/>
+                        <p:selectBooleanCheckbox value="#{invDetinvController.selected.divLibre}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvDetinvLabel_invId}"/>
+                        <h:outputText value="#{invDetinvController.selected.invId}" title="#{bundle.ViewInvDetinvTitle_invId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvDetinvViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

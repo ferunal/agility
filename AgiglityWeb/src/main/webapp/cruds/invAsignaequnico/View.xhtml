@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvAsignaequnicoViewDlg" widgetVar="InvAsignaequnicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvAsignaequnicoTitle}">
+            <h:form id="InvAsignaequnicoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invAsignaequnicoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_ixcId}"/>
+                        <h:outputText value="#{invAsignaequnicoController.selected.ixcId}" title="#{bundle.ViewInvAsignaequnicoTitle_ixcId}"/>
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_ixcFechaproceso}"/>
+                        <h:outputText value="#{invAsignaequnicoController.selected.ixcFechaproceso}" title="#{bundle.ViewInvAsignaequnicoTitle_ixcFechaproceso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_ixcEstado}"/>
+                        <p:selectBooleanCheckbox value="#{invAsignaequnicoController.selected.ixcEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_indversion}"/>
+                        <h:outputText value="#{invAsignaequnicoController.selected.indversion}" title="#{bundle.ViewInvAsignaequnicoTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_cxcIdasignado}"/>
+                        <h:outputText value="#{invAsignaequnicoController.selected.cxcIdasignado}" title="#{bundle.ViewInvAsignaequnicoTitle_cxcIdasignado}"/>
+                        <h:outputText value="#{bundle.ViewInvAsignaequnicoLabel_itrId}"/>
+                        <h:outputText value="#{invAsignaequnicoController.selected.itrId}" title="#{bundle.ViewInvAsignaequnicoTitle_itrId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvAsignaequnicoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfLocalidadEditDlg" widgetVar="RfLocalidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRfLocalidadTitle}">
+            <h:form id="RfLocalidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfLocalidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRfLocalidadLabel_locId}" for="locId" />
+                        <p:inputText id="locId" value="#{rfLocalidadController.selected.locId}" title="#{bundle.EditRfLocalidadTitle_locId}" required="true" requiredMessage="#{bundle.EditRfLocalidadRequiredMessage_locId}"/>
+                        <p:outputLabel value="#{bundle.EditRfLocalidadLabel_locDesc}" for="locDesc" />
+                        <p:inputText id="locDesc" value="#{rfLocalidadController.selected.locDesc}" title="#{bundle.EditRfLocalidadTitle_locDesc}" required="true" requiredMessage="#{bundle.EditRfLocalidadRequiredMessage_locDesc}"/>
+                        <p:outputLabel value="#{bundle.EditRfLocalidadLabel_locCod}" for="locCod" />
+                        <p:inputText id="locCod" value="#{rfLocalidadController.selected.locCod}" title="#{bundle.EditRfLocalidadTitle_locCod}" required="true" requiredMessage="#{bundle.EditRfLocalidadRequiredMessage_locCod}"/>
+                        <p:outputLabel value="#{bundle.EditRfLocalidadLabel_ciuId}" for="ciuId" />
+                        <p:selectOneMenu id="ciuId" value="#{rfLocalidadController.selected.ciuId}" required="true" requiredMessage="#{bundle.EditRfLocalidadRequiredMessage_ciuId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{rfCiudadController.itemsAvailableSelectOne}"
+                                           var="ciuIdItem"
+                                           itemValue="#{ciuIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfLocalidadController.update}" value="#{bundle.Save}" update="display,:RfLocalidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RfLocalidadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfLocalidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

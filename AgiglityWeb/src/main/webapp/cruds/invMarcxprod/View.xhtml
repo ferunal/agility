@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvMarcxprodViewDlg" widgetVar="InvMarcxprodViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvMarcxprodTitle}">
+            <h:form id="InvMarcxprodViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invMarcxprodController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvMarcxprodLabel_mxpId}"/>
+                        <h:outputText value="#{invMarcxprodController.selected.mxpId}" title="#{bundle.ViewInvMarcxprodTitle_mxpId}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcxprodLabel_mxpEst}"/>
+                        <p:selectBooleanCheckbox value="#{invMarcxprodController.selected.mxpEst}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvMarcxprodLabel_indversion}"/>
+                        <h:outputText value="#{invMarcxprodController.selected.indversion}" title="#{bundle.ViewInvMarcxprodTitle_indversion}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcxprodLabel_marId}"/>
+                        <h:outputText value="#{invMarcxprodController.selected.marId}" title="#{bundle.ViewInvMarcxprodTitle_marId}"/>
+                        <h:outputText value="#{bundle.ViewInvMarcxprodLabel_prdId}"/>
+                        <h:outputText value="#{invMarcxprodController.selected.prdId}" title="#{bundle.ViewInvMarcxprodTitle_prdId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvMarcxprodViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

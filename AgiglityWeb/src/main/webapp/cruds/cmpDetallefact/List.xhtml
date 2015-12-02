@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCmpDetallefactTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="CmpDetallefactListForm">
+                <p:panel header="#{bundle.ListCmpDetallefactTitle}">
+                    <p:dataTable id="datalist" value="#{cmpDetallefactController.items}" var="item"
+                                 selectionMode="single" selection="#{cmpDetallefactController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.detfId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detfId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfCantrecibida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detfCantrecibida}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfRecibido}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.detfRecibido}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfEst}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.detfEst}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_indversion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.indversion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfValorunitario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detfValorunitario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfFecharecibido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detfFecharecibido}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfProcesadorecibido}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.detfProcesadorecibido}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfProcesadocargainv}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.detfProcesadocargainv}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfDevolucion}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.detfDevolucion}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_detfObservacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detfObservacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_ccmId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ccmId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCmpDetallefactTitle_factId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.factId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cmpDetallefactController.prepareCreate}" update=":CmpDetallefactCreateForm" oncomplete="PF('CmpDetallefactCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CmpDetallefactViewForm" oncomplete="PF('CmpDetallefactViewDialog').show()" disabled="#{empty cmpDetallefactController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CmpDetallefactEditForm" oncomplete="PF('CmpDetallefactEditDialog').show()" disabled="#{empty cmpDetallefactController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cmpDetallefactController.destroy}" update=":growl,datalist" disabled="#{empty cmpDetallefactController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

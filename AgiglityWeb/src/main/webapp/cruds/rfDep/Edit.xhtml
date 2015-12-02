@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfDepEditDlg" widgetVar="RfDepEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRfDepTitle}">
+            <h:form id="RfDepEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfDepController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRfDepLabel_depId}" for="depId" />
+                        <p:inputText id="depId" value="#{rfDepController.selected.depId}" title="#{bundle.EditRfDepTitle_depId}" required="true" requiredMessage="#{bundle.EditRfDepRequiredMessage_depId}"/>
+                        <p:outputLabel value="#{bundle.EditRfDepLabel_depDesc}" for="depDesc" />
+                        <p:inputText id="depDesc" value="#{rfDepController.selected.depDesc}" title="#{bundle.EditRfDepTitle_depDesc}" required="true" requiredMessage="#{bundle.EditRfDepRequiredMessage_depDesc}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfDepController.update}" value="#{bundle.Save}" update="display,:RfDepListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RfDepEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfDepEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

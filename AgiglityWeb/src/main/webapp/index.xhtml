@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <h:form>
+            <p:panelGrid columns="2">
+                <h:outputText value="Usuario"/>
+                <p:inputText value="#{principalJSFBean.strUsuario}"/>
+                <p:password value="#{principalJSFBean.strClave}"/>
+                <p:commandButton value="Autenticar" actionListener="#{principalJSFBean.validarUsuario()}"/>
+            </p:panelGrid>
+        </h:form>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="/cruds/bancoxempresa/List" value="Show All Bancoxempresa Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpConsolcompra/List" value="Show All CmpConsolcompra Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpConspedido/List" value="Show All CmpConspedido Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpDetallefact/List" value="Show All CmpDetallefact Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpDetremision/List" value="Show All CmpDetremision Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpEntregapedido/List" value="Show All CmpEntregapedido Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpFactura/List" value="Show All CmpFactura Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpProdxreq/List" value="Show All CmpProdxreq Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpPxraprob/List" value="Show All CmpPxraprob Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpRemisioninv/List" value="Show All CmpRemisioninv Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpRequiscomp/List" value="Show All CmpRequiscomp Items"/>
+        <br />
+        <h:link outcome="/cruds/cmpRfTiporequisicion/List" value="Show All CmpRfTiporequisicion Items"/>
+        <br />
+        <h:link outcome="/cruds/invAsignaequnico/List" value="Show All InvAsignaequnico Items"/>
+        <br />
+        <h:link outcome="/cruds/invBancoxprov/List" value="Show All InvBancoxprov Items"/>
+        <br />
+        <h:link outcome="/cruds/invCatprod/List" value="Show All InvCatprod Items"/>
+        <br />
+        <h:link outcome="/cruds/invDetinv/List" value="Show All InvDetinv Items"/>
+        <br />
+        <h:link outcome="/cruds/invInvent/List" value="Show All InvInvent Items"/>
+        <br />
+        <h:link outcome="/cruds/invMarca/List" value="Show All InvMarca Items"/>
+        <br />
+        <h:link outcome="/cruds/invMarcxprod/List" value="Show All InvMarcxprod Items"/>
+        <br />
+        <h:link outcome="/cruds/invPresentprod/List" value="Show All InvPresentprod Items"/>
+        <br />
+        <h:link outcome="/cruds/invPresntxprod/List" value="Show All InvPresntxprod Items"/>
+        <br />
+        <h:link outcome="/cruds/invProducto/List" value="Show All InvProducto Items"/>
+        <br />
+        <h:link outcome="/cruds/invProdxprov/List" value="Show All InvProdxprov Items"/>
+        <br />
+        <h:link outcome="/cruds/invProovedor/List" value="Show All InvProovedor Items"/>
+        <br />
+        <h:link outcome="/cruds/invTipotransc/List" value="Show All InvTipotransc Items"/>
+        <br />
+        <h:link outcome="/cruds/invTransac/List" value="Show All InvTransac Items"/>
+        <br />
+        <h:link outcome="/cruds/rfBanco/List" value="Show All RfBanco Items"/>
+        <br />
+        <h:link outcome="/cruds/rfBarrio/List" value="Show All RfBarrio Items"/>
+        <br />
+        <h:link outcome="/cruds/rfCiudad/List" value="Show All RfCiudad Items"/>
+        <br />
+        <h:link outcome="/cruds/rfDep/List" value="Show All RfDep Items"/>
+        <br />
+        <h:link outcome="/cruds/rfLocalidad/List" value="Show All RfLocalidad Items"/>
+        <br />
+        <h:link outcome="/cruds/rfTipocuenta/List" value="Show All RfTipocuenta Items"/>
+        <br />
+        <h:link outcome="/cruds/rfTipodoc/List" value="Show All RfTipodoc Items"/>
+    </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+

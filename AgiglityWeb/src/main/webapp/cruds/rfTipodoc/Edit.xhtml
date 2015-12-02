@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RfTipodocEditDlg" widgetVar="RfTipodocEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRfTipodocTitle}">
+            <h:form id="RfTipodocEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rfTipodocController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditRfTipodocLabel_tdcId}" for="tdcId" />
+                        <p:inputText id="tdcId" value="#{rfTipodocController.selected.tdcId}" title="#{bundle.EditRfTipodocTitle_tdcId}" required="true" requiredMessage="#{bundle.EditRfTipodocRequiredMessage_tdcId}"/>
+                        <p:outputLabel value="#{bundle.EditRfTipodocLabel_tdcNombre}" for="tdcNombre" />
+                        <p:inputText id="tdcNombre" value="#{rfTipodocController.selected.tdcNombre}" title="#{bundle.EditRfTipodocTitle_tdcNombre}" required="true" requiredMessage="#{bundle.EditRfTipodocRequiredMessage_tdcNombre}"/>
+                        <p:outputLabel value="#{bundle.EditRfTipodocLabel_tdcEstado}" for="tdcEstado" />
+                        <p:selectBooleanCheckbox id="tdcEstado" value="#{rfTipodocController.selected.tdcEstado}" />
+                        <p:outputLabel value="#{bundle.EditRfTipodocLabel_indversion}" for="indversion" />
+                        <p:inputText id="indversion" value="#{rfTipodocController.selected.indversion}" title="#{bundle.EditRfTipodocTitle_indversion}" required="true" requiredMessage="#{bundle.EditRfTipodocRequiredMessage_indversion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rfTipodocController.update}" value="#{bundle.Save}" update="display,:RfTipodocListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RfTipodocEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RfTipodocEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
