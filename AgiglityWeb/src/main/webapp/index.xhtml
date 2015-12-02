@@ -6,19 +6,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Bienvenido a AGILITY</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+
         <h:form>
             <p:panelGrid columns="2">
                 <h:outputText value="Usuario"/>
                 <p:inputText value="#{principalJSFBean.strUsuario}"/>
+                <h:outputText value="Clave"/>
                 <p:password value="#{principalJSFBean.strClave}"/>
-                <p:commandButton value="Autenticar" actionListener="#{principalJSFBean.validarUsuario()}"/>
+                <p:commandButton value="Autenticar" actionListener="#{principalJSFBean.validarUsuario}"  action="#{principalJSFBean.validarUsario_A}">
+                    <p:ajax disabled="true"/>
+                </p:commandButton>
             </p:panelGrid>
         </h:form>
+        
+         <h:link outcome="/cruds/invCatprod/List" value="Categorías de producto"/>
+         <br />
+         <h:link outcome="/cruds/invProducto/List" value="Productos "/>
+         <br />
+        <!--
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
         <br />
@@ -87,6 +96,7 @@
         <h:link outcome="/cruds/rfTipocuenta/List" value="Show All RfTipocuenta Items"/>
         <br />
         <h:link outcome="/cruds/rfTipodoc/List" value="Show All RfTipodoc Items"/>
+        -->
     </h:body>
 
 

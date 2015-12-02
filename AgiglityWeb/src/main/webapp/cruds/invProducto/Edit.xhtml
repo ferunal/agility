@@ -33,7 +33,8 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{invCatprodController.itemsAvailableSelectOne}"
                                            var="cpdIdItem"
-                                           itemValue="#{cpdIdItem}"/>
+                                           itemValue="#{cpdIdItem}"
+                                           itemLabel="#{cpdIdItem.cpdNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{invProductoController.update}" value="#{bundle.Save}" update="display,:InvProductoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'InvProductoEditDialog');"/>

@@ -6,6 +6,7 @@
 package com.uniminuto.elcp.agility.ejb.crud;
 
 import com.uniminuto.elcp.agility.modelo.InvProducto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,8 +26,13 @@ public class InvProductoFacade extends AbstractFacade<InvProducto> {
         return em;
     }
 
+    public List<InvProducto> lstInvProductosXNombreLike(String nombre){
+     return em.createNamedQuery("InvProducto.findByPrdNombreLike").setParameter("prdNombre", "%" + nombre + "%").getResultList();
+    }
     public InvProductoFacade() {
         super(InvProducto.class);
     }
+    
+    
     
 }

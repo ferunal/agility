@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "InvProducto.findByIndversion", query = "SELECT i FROM InvProducto i WHERE i.indversion = :indversion"),
     @NamedQuery(name = "InvProducto.findByPrdEsp", query = "SELECT i FROM InvProducto i WHERE i.prdEsp = :prdEsp"),
     @NamedQuery(name = "InvProducto.findByPrdOcasnl", query = "SELECT i FROM InvProducto i WHERE i.prdOcasnl = :prdOcasnl"),
-    @NamedQuery(name = "InvProducto.findByPrdUnico", query = "SELECT i FROM InvProducto i WHERE i.prdUnico = :prdUnico")})
+    @NamedQuery(name = "InvProducto.findByPrdUnico", query = "SELECT i FROM InvProducto i WHERE i.prdUnico = :prdUnico"),
+    @NamedQuery(name = "InvProducto.findByPrdNombreLike", query = "SELECT i FROM InvProducto i WHERE i.prdNombre LIKE :prdNombre"),
+})
 public class InvProducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
